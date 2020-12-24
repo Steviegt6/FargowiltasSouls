@@ -77,7 +77,7 @@ namespace FargowiltasSouls.NPCs.MutantBoss
             npc.GetGlobalNPC<FargoSoulsGlobalNPC>().SpecialEnchantImmune = true;
             if (Fargowiltas.Instance.MasomodeEXLoaded)
             {
-                music = Fargowiltas.Instance.MasomodeEXCompatibility.ModInstance.GetSoundSlot(SoundType.Music, "Sounds/Music/rePrologue");
+                music = Fargowiltas.Instance.MasomodeEXCompat.ModInstance.GetSoundSlot(SoundType.Music, "Sounds/Music/rePrologue");
             }
             else
             {

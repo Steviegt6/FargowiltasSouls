@@ -23,6 +23,8 @@ namespace FargowiltasSouls.ModCompatibilities
         {
         }
 
+        public override void Load() => Initialize();
+
         public void Initialize()
         {
             if (ModInstance != null)

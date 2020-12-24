@@ -15,7 +15,7 @@ namespace FargowiltasSouls.Items.Accessories.Souls
         {
             DisplayName.SetDefault("Soul of Dimensions");
             DisplayName.AddTranslation(GameCulture.Chinese, "维度之魂");
-            String tooltip =
+            string tooltip =
 @"Increases HP by 300
 20% damage reduction
 Increases life regeneration by 8
@@ -33,7 +33,7 @@ Effects of Paladin's Shield, Frozen Turtle Shell, Arctic Diving Gear, Frog Legs,
 Effects of Lava Waders, Angler Tackle Bag, Paint Sprayer, Presserator, Cell Phone, and Gravity Globe
 'The dimensions of Terraria at your fingertips'";
 
-            String tooltip_ch =
+            string tooltip_ch =
 @"'泰拉瑞亚维度触手可及'
 增加300最大生命值
 增加20%伤害减免

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using FargowiltasSouls.Utilities;
+using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Items.MeleeItems;
 using ThoriumMod.Tiles;
@@ -11,117 +12,72 @@ namespace FargowiltasSouls.ModCompatibilities
         {
         }
 
-
         protected override void AddRecipes()
         {
-            int 
-                //foldedMetal = ModContent.ItemType<FoldedMetal>(),
-                arcaneArmorFabricator = ModContent.TileType<ArcaneArmorFabricator>();
+            /*int foldedMetal = ModContent.ItemType<FoldedMetal>();
+            int arcaneArmorFabricator = ModContent.TileType<ArcaneArmorFabricator>();
 
-
-            /*ModRecipe recipe = new ModRecipe(CallerMod);
-
+            ModRecipe recipe = new ModRecipe(CallerMod);
             recipe.AddIngredient(foldedMetal);
             recipe.AddTile(arcaneArmorFabricator);
-            
             recipe.SetResult(ModContent.ItemType<SteelArrow>());
             recipe.AddRecipe();
 
-
-
             recipe = new ModRecipe(CallerMod);
-
             recipe.AddIngredient(foldedMetal);
             recipe.AddTile(arcaneArmorFabricator);
-
             recipe.SetResult(ModContent.ItemType<SteelAxe>());
             recipe.AddRecipe();
 
-
-
             recipe = new ModRecipe(CallerMod);
-
             recipe.AddIngredient(foldedMetal);
             recipe.AddTile(arcaneArmorFabricator);
-
             recipe.SetResult(ModContent.ItemType<SteelBattleAxe>(), 10);
             recipe.AddRecipe();
 
-
-
             recipe = new ModRecipe(CallerMod);
-
             recipe.AddIngredient(foldedMetal);
             recipe.AddTile(arcaneArmorFabricator);
-
             recipe.SetResult(ModContent.ItemType<SteelBlade>());
             recipe.AddRecipe();
 
-
-
             recipe = new ModRecipe(CallerMod);
-
             recipe.AddIngredient(foldedMetal);
             recipe.AddTile(arcaneArmorFabricator);
-
             recipe.SetResult(ModContent.ItemType<SteelBow>());
             recipe.AddRecipe();
 
-
-
             recipe = new ModRecipe(CallerMod);
-
             recipe.AddIngredient(foldedMetal);
             recipe.AddTile(arcaneArmorFabricator);
-
             recipe.SetResult(ModContent.ItemType<SteelChestplate>());
             recipe.AddRecipe();
 
-
-
             recipe = new ModRecipe(CallerMod);
-
             recipe.AddIngredient(foldedMetal);
             recipe.AddTile(arcaneArmorFabricator);
-
             recipe.SetResult(ModContent.ItemType<SteelGreaves>());
             recipe.AddRecipe();
 
-
-
             recipe = new ModRecipe(CallerMod);
-
             recipe.AddIngredient(foldedMetal);
             recipe.AddTile(arcaneArmorFabricator);
-
             recipe.SetResult(ModContent.ItemType<SteelHelmet>());
             recipe.AddRecipe();
 
-
-
             recipe = new ModRecipe(CallerMod);
-
             recipe.AddIngredient(foldedMetal);
             recipe.AddTile(arcaneArmorFabricator);
-
             recipe.SetResult(ModContent.ItemType<SteelMallet>());
             recipe.AddRecipe();
 
-
-
             recipe = new ModRecipe(CallerMod);
-
             recipe.AddIngredient(foldedMetal);
             recipe.AddTile(arcaneArmorFabricator);
-
             recipe.SetResult(ModContent.ItemType<SteelPickaxe>());
             recipe.AddRecipe();*/
         }
 
-        protected override void AddRecipeGroups()
-        {
-            RecipeGroup group = new RecipeGroup(() => Lang.misc[37] + " Combination Yoyo", ModContent.ItemType<Nocturnal>(), ModContent.ItemType<Sanguine>());
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyThoriumYoyo", group);
-        }
+        protected override void AddRecipeGroups() => FargoUtilities.CreateRecipeGroup("RecipeGroups.AnyThoriumYoyo", CallerMod, true, ModContent.ItemType<Nocturnal>(), ModContent.ItemType<Sanguine>());
     }
 }

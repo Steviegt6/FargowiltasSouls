@@ -1,0 +1,41 @@
+﻿Keys.FreezeTime=Freeze Time
+Keys.TurnGold=Turn Gold
+Keys.ThrowSmokeBomb=Throw Smoke Bomb
+Keys.FireballDash=Fireball Dash
+Keys.MutantBomb=Mutant Bomb
+
+RecipeGroups.AnyThoriumYoyo=Combination Yoyos
+
+Toggles.PatreonHeader=Patreon Items
+Toggles.ParteonRoomba=Roomba
+Toggles.PatreonOrb=Computation Orb
+Toggles.PatreonFishingRod=Miss Drakovi's Fishing Pole
+Toggles.PatreonDoor=Squidward Door
+Toggles.PatreonWolf=Paradox Wolf Soul
+Toggles.PatreonDove=Fig Branch
+Toggles.PatreonKingSlime=Medallion of the Fallen King
+Toggles.PatreonFishron=Staff of Unleashed Ocean
+Toggles.PatreonPlant=Piranha Plant Voodoo Doll
+
+Toggles.MasoHeader=Eternity Mode
+Toggles.MasoBossRecolors=Boss Recolors
+Toggles.MasoIconConfig=Sinister Icon
+Toggles.MasoIconDropsConfig=Sinister Icon Drops
+Toggles.MasoGrazeConfig=Graze
+Toggles.MasoDevianttHeartsConfig=Attacks Spawn Homing Hearts
+Toggles.SupremeFairyHeader=Supreme Deathbringer Fairy
+Toggles.MasoSlimeConfig=Slimy Balls
+Toggles.SlimeFallingConfig=Increased Fall Speed
+Toggles.MasoEyeConfig=Scythes When Dashing
+Toggles.MasoHoneyConfig=Honey When Hitting Enemies
+Toggles.MasoSkeleConfig=Skeletron Arms Minion
+Toggles.BionomicHeader=Bionomic Cluster
+Toggles.MasoConcotionConfig=Tim's Concoction
+Toggles.MasoCarrotConfig=Carrot View
+Toggles.MasoRainbowConfig=Rainbow Slime Minion
+Toggles.MasoFrigidConfig=Forstfireballs
+Toggles.MasoNymphConfig=Attacks Spawn Hearts
+Toggles.MasoSqueakConfig=Squeaky Toy on Hit
+Toggles.MasoPouchConfig=Tentacles on Hit
+Toggles.MasoClippedConfig=Inflict Clipped Wings
+Toggles.TribalCharmConfig=Tribal Charm Auto-Swing

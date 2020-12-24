@@ -17,9 +17,9 @@ namespace FargowiltasSouls.Items.Accessories.Souls
         public static int tooltipIndex = 0;
         public static int Counter = 10;
 
-        private List<String> tooltipsFull = new List<String>();
+        private List<string> tooltipsFull = new List<string>();
 
-        private String[] vanillaTooltips = new String[]
+        private string[] vanillaTooltips = new string[]
         {
     "250% increased damage",
     "250% increased attack speed",
@@ -155,7 +155,7 @@ namespace FargowiltasSouls.Items.Accessories.Souls
     "Effects of Builder Mode"
         };
 
-        private String[] thoriumTooltips = new String[]
+        private string[] thoriumTooltips = new string[]
         {
             "Armor bonuses from Living Wood",
             "Armor bonuses from Life Bloom",
@@ -234,7 +234,7 @@ namespace FargowiltasSouls.Items.Accessories.Souls
             "Effects of Weighted Winglets"
         };
 
-        private String[] calamityTooltips = new String[]
+        private string[] calamityTooltips = new string[]
         {
             "Armor bonuses from Aerospec",
             "Armor bonuses from Statigel",
@@ -293,13 +293,13 @@ namespace FargowiltasSouls.Items.Accessories.Souls
             "Effects of Asgardian Aegis"
         };
 
-        private String[] dbtTooltips = new String[]
+        private string[] dbtTooltips = new string[]
         {
             "Effects of Zenkai Charm",
             "Effects of Aspera Crystallite"
         };
 
-        private String[] soaTooltips = new String[]
+        private string[] soaTooltips = new string[]
         {
             "Armor bonuses from Bismuth",
             "Armor bonuses from Frosthunter",
@@ -335,7 +335,7 @@ namespace FargowiltasSouls.Items.Accessories.Souls
             DisplayName.SetDefault("Soul of Eternity");
 
             //oh no idk even for translate
-            String tooltip_ch =
+            string tooltip_ch =
 @"'不论凡人或不朽, 都承认你的神性'
 大幅增加生命回复, 最大法力值增至999 ,+30最大召唤栏, +20最大哨兵栏, 增加500%最大生命值 , 50%伤害减免
 增加250%所有类型伤害和攻击速度; 增加100%射击速度与击退; 增加50点护甲穿透; 暴击造成10倍伤害, 暴击率设为50%
@@ -361,7 +361,7 @@ namespace FargowiltasSouls.Items.Accessories.Souls
 拥有孢子囊, 圣骑士护盾, 冰霜龟壳, 北极潜水装备, 蛙腿, 飞毯, 熔岩行走靴和渔具包的效果
 拥有油漆喷雾器, 促动安装器, 手机, 重力球, 花之靴, 忍者极意, 贪婪戒指, 天界贝壳和闪耀石的效果
 获得发光, 探索者, 猎人和危险感知效果; 获得建造模式权限, 拥有无尽遗物的效果, 可以超远程拾取物品";
-            String tooltip_sp = @"'Mortal o Inmortal, todas las cosas reconocen tu reclamación a la divinidad'
+            string tooltip_sp = @"'Mortal o Inmortal, todas las cosas reconocen tu reclamación a la divinidad'
 Drasticamente incrementa regeneración de vida, incrementa tu mana máximo a 999, súbditos por 30, torretas por 20, vida maxima por 500%, reducción de daño por 50%
 250% daño incrementado y velocidad de ataque; 100% velocidad de disparo y retroceso; Incrementa penetración de armadura por 50; Críticos hacen 10x daño y la probabilidad de Crítico se vuelve 50%
 Consigue un crítico para incrementarlo por 10%, a 100% cada ataque gana 10% robo de vida y ganas +10% daño y +10 defensa; Esto se apila hasta 200,000 veces hasta que te golpeen
