@@ -1,8 +1,6 @@
 ﻿using FargowiltasSouls.Utilities;
-using Terraria;
 using Terraria.ModLoader;
 using ThoriumMod.Items.MeleeItems;
-using ThoriumMod.Tiles;
 
 namespace FargowiltasSouls.ModCompatibilities
 {

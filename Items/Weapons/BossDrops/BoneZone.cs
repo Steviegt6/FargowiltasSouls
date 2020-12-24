@@ -4,9 +4,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using FargowiltasSouls.Projectiles.BossWeapons;
-using System.Collections.Generic;
-using System.Linq;
-using FargowiltasSouls.Utilities;
 
 namespace FargowiltasSouls.Items.Weapons.BossDrops
 {

@@ -181,7 +181,7 @@ namespace FargowiltasSouls
                     ModContent.BuffType<ReverseManaFlow>(),
                     ModContent.BuffType<Rotting>(),
                     ModContent.BuffType<Shadowflame>(),
-                    ModContent.BuffType<SqueakyToy>(),
+                    ModContent.BuffType<Buffs.Masomode.SqueakyToy>(),
                     ModContent.BuffType<Stunned>(),
                     ModContent.BuffType<Swarming>(),
                     ModContent.BuffType<Unstable>(),

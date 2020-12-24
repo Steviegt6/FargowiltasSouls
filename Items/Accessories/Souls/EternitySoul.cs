@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 using Terraria.Localization;
 using System.Collections.Generic;
 using Terraria.DataStructures;

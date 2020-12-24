@@ -15,7 +15,6 @@ using FargowiltasSouls.Items.Accessories.Masomode;
 using FargowiltasSouls.Items.Misc;
 using Fargowiltas.NPCs;
 using FargowiltasSouls.Items.Tiles;
-using FargowiltasSouls.Items.Weapons.Misc;
 
 namespace FargowiltasSouls.NPCs
 {
