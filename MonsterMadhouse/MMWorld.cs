@@ -39,7 +39,7 @@ namespace FargowiltasSouls
 		{
             if (MMPoints >= 1000)
             {
-                FargoSoulsWorld.downedMM = true;
+                FargoSoulsWorld.DownedMM = true;
                 Main.NewText("The armies of Terraria retreat! Victory!", 250, 170, 50);
                 MMPoints = 0;
                 MMArmy = false;

@@ -6077,7 +6077,7 @@ namespace FargowiltasSouls.NPCs
                             pool[NPCID.RaggedCasterOpenCoat] = .001f;
                         }
 
-                        if (FargoSoulsWorld.downedBetsy && !sinisterIcon && !AnyBossAlive())
+                        if (FargoSoulsWorld.DownedBetsy && !sinisterIcon && !AnyBossAlive())
                             pool[NPCID.DD2Betsy] = .002f;
                     }
                     else if (sky)
@@ -6472,9 +6472,9 @@ namespace FargowiltasSouls.NPCs
                     case NPCID.GoblinWarrior:
                         if (NPC.downedGoblins)
                         {
-                            if (FargoSoulsWorld.firstGoblins)
+                            if (FargoSoulsWorld.FirstGoblins)
                             {
-                                FargoSoulsWorld.firstGoblins = false;
+                                FargoSoulsWorld.FirstGoblins = false;
                                 //WorldGen.dropMeteor();
                                 if (!NPC.AnyNPCs(ModContent.NPCType<Abominationn>()))
                                 {
@@ -6943,7 +6943,7 @@ namespace FargowiltasSouls.NPCs
                     case NPCID.DD2Betsy:
                         npc.DropItemInstanced(npc.position, npc.Size, ModContent.ItemType<BetsysHeart>());
                         npc.DropItemInstanced(npc.position, npc.Size, ItemID.GoldenCrate, 5);
-                        FargoSoulsWorld.downedBetsy = true;
+                        FargoSoulsWorld.DownedBetsy = true;
                         break;
 
                     case NPCID.DukeFishron:
@@ -6995,7 +6995,7 @@ namespace FargowiltasSouls.NPCs
                     #endregion
 
                     case NPCID.Painter:
-                        if (FargoSoulsWorld.downedMutant && NPC.AnyNPCs(ModContent.NPCType<MutantBoss.MutantBoss>()))
+                        if (FargoSoulsWorld.DownedMutant && NPC.AnyNPCs(ModContent.NPCType<MutantBoss.MutantBoss>()))
                             Item.NewItem(npc.Hitbox, ModContent.ItemType<ScremPainting>());
                         break;
 
@@ -7417,7 +7417,7 @@ namespace FargowiltasSouls.NPCs
 
                             if (fishBossEX == npc.whoAmI) //drop loot here (avoids the vanilla "fishron defeated" message)
                             {
-                                FargoSoulsWorld.downedFishronEX = true;
+                                FargoSoulsWorld.DownedFishronEX = true;
                                 if (Main.netMode == NetmodeID.SinglePlayer)
                                     Main.NewText("Duke Fishron EX has been defeated!", 50, 100, 255);
                                 else if (Main.netMode == NetmodeID.Server)

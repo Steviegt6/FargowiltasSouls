@@ -4713,7 +4713,7 @@ namespace FargowiltasSouls.NPCs
             }
 
             //drop summon
-            if (NPC.downedGolemBoss && !FargoSoulsWorld.downedBetsy && Main.netMode != NetmodeID.MultiplayerClient && npc.HasPlayerTarget && !droppedSummon)
+            if (NPC.downedGolemBoss && !FargoSoulsWorld.DownedBetsy && Main.netMode != NetmodeID.MultiplayerClient && npc.HasPlayerTarget && !droppedSummon)
             {
                 Player player = Main.player[npc.target];
 

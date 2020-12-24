@@ -1401,7 +1401,7 @@ namespace FargowiltasSouls.NPCs.DeviBoss
                 playerInvulTriggered = true;
 
             //drop summon
-            if (!FargoSoulsWorld.downedDevi && Main.netMode != NetmodeID.MultiplayerClient && npc.HasPlayerTarget && !droppedSummon)
+            if (!FargoSoulsWorld.DownedDevi && Main.netMode != NetmodeID.MultiplayerClient && npc.HasPlayerTarget && !droppedSummon)
             {
                 Item.NewItem(player.Hitbox, ModContent.ItemType<DevisCurse>());
                 droppedSummon = true;
@@ -1681,7 +1681,7 @@ namespace FargowiltasSouls.NPCs.DeviBoss
                 Item.NewItem(npc.Hitbox, mod.ItemType("ChibiHat"));
             }
 
-            FargoSoulsWorld.downedDevi = true;
+            FargoSoulsWorld.DownedDevi = true;
             if (Main.netMode == NetmodeID.Server)
                 NetMessage.SendData(MessageID.WorldData); //sync world
             

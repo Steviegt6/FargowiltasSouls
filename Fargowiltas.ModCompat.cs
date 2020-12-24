@@ -23,22 +23,22 @@ namespace FargowiltasSouls
                     return FargoSoulsWorld.MasochistMode;
 
                 case "downedmutant":
-                    return FargoSoulsWorld.downedMutant;
+                    return FargoSoulsWorld.DownedMutant;
 
                 case "downedabom":
                 case "downedabomination":
                 case "downedabominationn":
-                    return FargoSoulsWorld.downedAbom;
+                    return FargoSoulsWorld.DownedAbom;
 
                 case "downeddevi":
                 case "downeddeviant":
                 case "downeddeviantt":
-                    return FargoSoulsWorld.downedDevi;
+                    return FargoSoulsWorld.DownedDevi;
 
                 case "downedfishronex":
                 case "downedukeex":
                 case "downeddukefishronex":
-                    return FargoSoulsWorld.downedFishronEX;
+                    return FargoSoulsWorld.DownedFishronEX;
 
                 case "pureheart":
                     return Main.LocalPlayer.GetModPlayer<FargoPlayer>().PureHeart;

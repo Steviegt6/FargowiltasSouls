@@ -150,7 +150,7 @@ namespace FargowiltasSouls.NPCs.MutantBoss
                         if (Fargowiltas.Instance.MasomodeEXLoaded)
                             Projectile.NewProjectile(npc.Center, Vector2.Zero, ModLoader.GetMod("MasomodeEX").ProjectileType("MutantText"), 0, 0f, Main.myPlayer, npc.whoAmI);
 
-                        if (FargoSoulsWorld.downedAbom && (Fargowiltas.Instance.MasomodeEXLoaded || FargoSoulsWorld.AngryMutant))// || Fargowiltas.Instance.CalamityLoaded))
+                        if (FargoSoulsWorld.DownedAbom && (Fargowiltas.Instance.MasomodeEXLoaded || FargoSoulsWorld.AngryMutant))// || Fargowiltas.Instance.CalamityLoaded))
                             Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<BossRush>(), 0, 0f, Main.myPlayer, npc.whoAmI);
                     }
                 }
@@ -592,9 +592,9 @@ namespace FargowiltasSouls.NPCs.MutantBoss
                     }
                     else if (npc.ai[1] == 61 && npc.ai[2] < 5 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
-                        if (FargoSoulsWorld.MasochistMode && FargoSoulsWorld.skipMutantP1 >= 10)
+                        if (FargoSoulsWorld.MasochistMode && FargoSoulsWorld.SkipMutantP1 >= 10)
                         {
-                            if (FargoSoulsWorld.skipMutantP1 == 10)
+                            if (FargoSoulsWorld.SkipMutantP1 == 10)
                             {
                                 string text = "Mutant tires of the charade...";
                                 if (Main.netMode == NetmodeID.SinglePlayer)
@@ -946,9 +946,9 @@ namespace FargowiltasSouls.NPCs.MutantBoss
                     }
                     else if (npc.ai[1] == 120)
                     {
-                        if (FargoSoulsWorld.MasochistMode && FargoSoulsWorld.skipMutantP1 <= 10)
+                        if (FargoSoulsWorld.MasochistMode && FargoSoulsWorld.SkipMutantP1 <= 10)
                         {
-                            FargoSoulsWorld.skipMutantP1++;
+                            FargoSoulsWorld.SkipMutantP1++;
                             if (Main.netMode == NetmodeID.Server)
                                 NetMessage.SendData(MessageID.WorldData);
                         }
@@ -1983,7 +1983,7 @@ namespace FargowiltasSouls.NPCs.MutantBoss
                 playerInvulTriggered = true;
             
             //drop summon
-            if (FargoSoulsWorld.downedAbom && !FargoSoulsWorld.downedMutant && Main.netMode != NetmodeID.MultiplayerClient && npc.HasPlayerTarget && !droppedSummon)
+            if (FargoSoulsWorld.DownedAbom && !FargoSoulsWorld.DownedMutant && Main.netMode != NetmodeID.MultiplayerClient && npc.HasPlayerTarget && !droppedSummon)
             {
                 Item.NewItem(player.Hitbox, ModContent.ItemType<MutantsCurse>());
                 droppedSummon = true;
@@ -2196,8 +2196,8 @@ namespace FargowiltasSouls.NPCs.MutantBoss
                 }
             }
 
-            FargoSoulsWorld.downedMutant = true;
-            FargoSoulsWorld.skipMutantP1 = 0;
+            FargoSoulsWorld.DownedMutant = true;
+            FargoSoulsWorld.SkipMutantP1 = 0;
             if (Main.netMode == NetmodeID.Server)
                 NetMessage.SendData(MessageID.WorldData); //sync world
             

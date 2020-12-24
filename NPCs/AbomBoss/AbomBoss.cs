@@ -978,7 +978,7 @@ namespace FargowiltasSouls.NPCs.AbomBoss
                 playerInvulTriggered = true;
 
             //drop summon
-            if (NPC.downedMoonlord && !FargoSoulsWorld.downedAbom && Main.netMode != NetmodeID.MultiplayerClient && npc.HasPlayerTarget && !droppedSummon)
+            if (NPC.downedMoonlord && !FargoSoulsWorld.DownedAbom && Main.netMode != NetmodeID.MultiplayerClient && npc.HasPlayerTarget && !droppedSummon)
             {
                 Item.NewItem(player.Hitbox, ModContent.ItemType<AbomsCurse>());
                 droppedSummon = true;
@@ -1176,7 +1176,7 @@ namespace FargowiltasSouls.NPCs.AbomBoss
                 Item.NewItem(npc.Hitbox, mod.ItemType("BabyScythe"));
             }
 
-            FargoSoulsWorld.downedAbom = true;
+            FargoSoulsWorld.DownedAbom = true;
             if (Main.netMode == NetmodeID.Server)
                 NetMessage.SendData(MessageID.WorldData); //sync world
             
