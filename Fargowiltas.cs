@@ -24,6 +24,22 @@ using Fargowiltas.Items.Explosives;
 using Microsoft.Xna.Framework.Graphics;
 using FargowiltasSouls.Items.Dyes;
 using FargowiltasSouls.Utilities;
+using FargowiltasSouls.Items;
+using FargowiltasSouls.Items.Accessories.Forces;
+using FargowiltasSouls.Items.Accessories.Enchantments;
+using FargowiltasSouls.Items.Tiles;
+using FargowiltasSouls.Items.Misc;
+using FargowiltasSouls.Items.Armor;
+using FargowiltasSouls.Items.Accessories.Souls;
+using FargowiltasSouls.Patreon.Gittle;
+using FargowiltasSouls.Patreon.Daawnz;
+using FargowiltasSouls.Patreon.Sasha;
+using FargowiltasSouls.Patreon.Sam;
+using FargowiltasSouls.Patreon.ParadoxWolf;
+using FargowiltasSouls.Patreon.ManliestDove;
+using FargowiltasSouls.Patreon.Catsounds;
+using FargowiltasSouls.Patreon.DemonKing;
+using FargowiltasSouls.Patreon.LaBonez;
 
 namespace FargowiltasSouls
 {
@@ -92,253 +108,253 @@ namespace FargowiltasSouls
 
             #region Toggles
 
-            AddToggle("PresetHeader", "Preset Configurations", "Masochist", "ffffff");
+            AddToggle("PresetHeader", ModContent.ItemType<Masochist>());
 
             #region enchants
 
-            AddToggle("WoodHeader", "Force of Timber", "TimberForce", "ffffff");
-            AddToggle("BorealConfig", "Boreal Snowballs", "BorealWoodEnchant", "8B7464");
-            AddToggle("MahoganyConfig", "Mahogany Hook Speed", "RichMahoganyEnchant", "b56c64");
-            AddToggle("EbonConfig", "Ebonwood Shadowflame", "EbonwoodEnchant", "645a8d");
-            AddToggle("ShadeConfig", "Blood Geyser On Hit", "ShadewoodEnchant", "586876");
-            AddToggle("ShadeOnHitConfig", "Proximity Triggers On Hit Effects", "ShadewoodEnchant", "586876");
-            AddToggle("PalmConfig", "Palmwood Sentry", "PalmWoodEnchant", "b78d56");
-            AddToggle("PearlConfig", "Pearlwood Rain", "PearlwoodEnchant", "ad9a5f");
+            AddToggle("WoodHeader", ModContent.ItemType<TimberForce>());
+            AddToggle("BorealConfig", ModContent.ItemType<BorealWoodEnchant>(), "8B7464");
+            AddToggle("MahoganyConfig", ModContent.ItemType<RichMahoganyEnchant>(), "b56c64");
+            AddToggle("EbonConfig", ModContent.ItemType<EbonwoodEnchant>(), "645a8d");
+            AddToggle("ShadeConfig", ModContent.ItemType<ShadewoodEnchant>(), "586876");
+            AddToggle("ShadeOnHitConfig", ModContent.ItemType<ShadewoodEnchant>(), "586876");
+            AddToggle("PalmConfig", ModContent.ItemType<PalmWoodEnchant>(), "b78d56");
+            AddToggle("PearlConfig", ModContent.ItemType<PearlwoodEnchant>(), "ad9a5f");
 
-            AddToggle("EarthHeader", "Force of Earth", "EarthForce", "ffffff");
-            AddToggle("AdamantiteConfig", "Adamantite Projectile Splitting", "AdamantiteEnchant", "dd557d");
-            AddToggle("CobaltConfig", "Cobalt Shards", "CobaltEnchant", "3da4c4");
-            AddToggle("AncientCobaltConfig", "Ancient Cobalt Stingers", "AncientCobaltEnchant", "354c74");
-            AddToggle("MythrilConfig", "Mythril Weapon Speed", "MythrilEnchant", "9dd290");
-            AddToggle("OrichalcumConfig", "Orichalcum Petals", "OrichalcumEnchant", "eb3291");
-            AddToggle("PalladiumConfig", "Palladium Healing", "PalladiumEnchant", "f5ac28");
-            AddToggle("PalladiumOrbConfig", "Palladium Orbs", "PalladiumEnchant", "f5ac28");
-            AddToggle("TitaniumConfig", "Titanium Shadow Dodge", "TitaniumEnchant", "828c88");
+            AddToggle("EarthHeader", ModContent.ItemType<EarthForce>());
+            AddToggle("AdamantiteConfig", ModContent.ItemType<AdamantiteEnchant>(), "dd557d");
+            AddToggle("CobaltConfig", ModContent.ItemType<CobaltEnchant>(), "3da4c4");
+            AddToggle("AncientCobaltConfig", ModContent.ItemType<AncientCobaltEnchant>(), "354c74");
+            AddToggle("MythrilConfig", ModContent.ItemType<MythrilEnchant>(), "9dd290");
+            AddToggle("OrichalcumConfig", ModContent.ItemType<OrichalcumEnchant>(), "eb3291");
+            AddToggle("PalladiumConfig", ModContent.ItemType<PalladiumEnchant>(), "f5ac28");
+            AddToggle("PalladiumOrbConfig", ModContent.ItemType<PalladiumEnchant>(), "f5ac28");
+            AddToggle("TitaniumConfig", ModContent.ItemType<TitaniumEnchant>(), "828c88");
 
-            AddToggle("TerraHeader", "Terra Force", "TerraForce", "ffffff");
-            AddToggle("CopperConfig", "Copper Lightning", "CopperEnchant", "d56617");
-            AddToggle("IronMConfig", "Iron Magnet", "IronEnchant", "988e83");
-            AddToggle("IronSConfig", "Iron Shield", "IronEnchant", "988e83");
-            AddToggle("CthulhuShield", "Shield of Cthulhu", "IronEnchant", "988e83");
-            AddToggle("TinConfig", "Tin Crits", "TinEnchant", "a28b4e");
-            AddToggle("TungstenConfig", "Tungsten Item Effect", "TungstenEnchant", "b0d2b2");
-            AddToggle("TungstenProjConfig", "Tungsten Projectile Effect", "TungstenEnchant", "b0d2b2");
-            AddToggle("ObsidianConfig", "Obsidian Explosions", "ObsidianEnchant", "453e73");
+            AddToggle("TerraHeader", ModContent.ItemType<TerraForce>());
+            AddToggle("CopperConfig", ModContent.ItemType<CopperEnchant>(), "d56617");
+            AddToggle("IronMConfig", ModContent.ItemType<IronEnchant>(), "988e83");
+            AddToggle("IronSConfig", ModContent.ItemType<IronEnchant>(), "988e83");
+            AddToggle("CthulhuShield", ModContent.ItemType<IronEnchant>(), "988e83");
+            AddToggle("TinConfig", ModContent.ItemType<TinEnchant>(), "a28b4e");
+            AddToggle("TungstenConfig", ModContent.ItemType<TungstenEnchant>(), "b0d2b2");
+            AddToggle("TungstenProjConfig", ModContent.ItemType<TungstenEnchant>(), "b0d2b2");
+            AddToggle("ObsidianConfig", ModContent.ItemType<ObsidianEnchant>(), "453e73");
 
-            AddToggle("WillHeader", "Force of Will", "WillForce", "ffffff");
-            AddToggle("GladiatorConfig", "Gladiator Rain", "GladiatorEnchant", "9c924e");
-            AddToggle("GoldConfig", "Gold Lucky Coin", "GoldEnchant", "e7b21c");
-            AddToggle("HuntressConfig", "Huntress Ability", "HuntressEnchant", "7ac04c");
-            AddToggle("ValhallaConfig", "Squire/Valhalla Effect", "ValhallaKnightEnchant", "93651e");
-            AddToggle("SquirePanicConfig", "Ballista Panic On Hit", "SquireEnchant", "948f8c");
+            AddToggle("WillHeader", ModContent.ItemType<WillForce>());
+            AddToggle("GladiatorConfig", ModContent.ItemType<GladiatorEnchant>(), "9c924e");
+            AddToggle("GoldConfig", ModContent.ItemType<GoldEnchant>(), "e7b21c");
+            AddToggle("HuntressConfig", ModContent.ItemType<HuntressEnchant>(), "7ac04c");
+            AddToggle("ValhallaConfig", ModContent.ItemType<ValhallaKnightEnchant>(), "93651e");
+            AddToggle("SquirePanicConfig", ModContent.ItemType<SquireEnchant>(), "948f8c");
 
-            AddToggle("LifeHeader", "Force of Life", "LifeForce", "ffffff");
-            AddToggle("BeeConfig", "Bees", "BeeEnchant", "FEF625");
-            AddToggle("BeetleConfig", "Beetles", "BeetleEnchant", "6D5C85");
-            AddToggle("CactusConfig", "Cactus Needles", "CactusEnchant", "799e1d");
-            AddToggle("PumpkinConfig", "Grow Pumpkins", "PumpkinEnchant", "e3651c");
-            AddToggle("SpiderConfig", "Spider Swarm", "SpiderEnchant", "6d4e45");
-            AddToggle("TurtleConfig", "Turtle Shell Buff", "TurtleEnchant", "f89c5c");
+            AddToggle("LifeHeader", ModContent.ItemType<LifeForce>());
+            AddToggle("BeeConfig", ModContent.ItemType<BeeEnchant>(), "FEF625");
+            AddToggle("BeetleConfig", ModContent.ItemType<BeetleEnchant>(), "6D5C85");
+            AddToggle("CactusConfig", ModContent.ItemType<CactusEnchant>(), "799e1d");
+            AddToggle("PumpkinConfig", ModContent.ItemType<PumpkinEnchant>(), "e3651c");
+            AddToggle("SpiderConfig", ModContent.ItemType<SpiderEnchant>(), "6d4e45");
+            AddToggle("TurtleConfig", ModContent.ItemType<TurtleEnchant>(), "f89c5c");
 
-            AddToggle("NatureHeader", "Force of Nature", "NatureForce", "ffffff");
-            AddToggle("ChlorophyteConfig", "Chlorophyte Leaf Crystal", "ChlorophyteEnchant", "248900");
-            AddToggle("ChlorophyteFlowerConfig", "Flower Boots", "ChlorophyteEnchant", "248900");
-            AddToggle("CrimsonConfig", "Crimson Regen", "CrimsonEnchant", "C8364B");
-            AddToggle("RainConfig", "Rain Clouds", "RainEnchant", "ffec00");
-            AddToggle("FrostConfig", "Frost Icicles", "FrostEnchant", "7abdb9");
-            AddToggle("SnowConfig", "Snowstorm", "SnowEnchant", "25c3f2");
-            AddToggle("JungleConfig", "Jungle Spores", "JungleEnchant", "71971f");
-            AddToggle("CordageConfig", "Plant Fiber Cordage", "JungleEnchant", "71971f");
-            AddToggle("MoltenConfig", "Molten Inferno Buff", "MoltenEnchant", "c12b2b");
-            AddToggle("MoltenEConfig", "Molten Explosion On Hit", "MoltenEnchant", "c12b2b");
-            AddToggle("ShroomiteConfig", "Shroomite Stealth", "ShroomiteEnchant", "008cf4");
-            AddToggle("ShroomiteShroomConfig", "Shroomite Mushrooms", "ShroomiteEnchant", "008cf4");
+            AddToggle("NatureHeader", ModContent.ItemType<NatureForce>());
+            AddToggle("ChlorophyteConfig", ModContent.ItemType<ChlorophyteEnchant>(), "248900");
+            AddToggle("ChlorophyteFlowerConfig", ModContent.ItemType<ChlorophyteEnchant>(), "248900");
+            AddToggle("CrimsonConfig", ModContent.ItemType<CrimsonEnchant>(), "C8364B");
+            AddToggle("RainConfig", ModContent.ItemType<RainEnchant>(), "ffec00");
+            AddToggle("FrostConfig", ModContent.ItemType<FrostEnchant>(), "7abdb9");
+            AddToggle("SnowConfig", ModContent.ItemType<SnowEnchant>(), "25c3f2");
+            AddToggle("JungleConfig", ModContent.ItemType<JungleEnchant>(), "71971f");
+            AddToggle("CordageConfig", ModContent.ItemType<JungleEnchant>(), "71971f");
+            AddToggle("MoltenConfig", ModContent.ItemType<MoltenEnchant>(), "c12b2b");
+            AddToggle("MoltenEConfig", ModContent.ItemType<MoltenEnchant>(), "c12b2b");
+            AddToggle("ShroomiteConfig", ModContent.ItemType<ShroomiteEnchant>(), "008cf4");
+            AddToggle("ShroomiteShroomConfig", ModContent.ItemType<ShroomiteEnchant>(), "008cf4");
 
-            AddToggle("ShadowHeader", "Shadow Force", "ShadowForce", "ffffff");
-            AddToggle("DarkArtConfig", "Flameburst Minion", "DarkArtistEnchant", "9b5cb0");
-            AddToggle("ApprenticeConfig", "Apprentice Effect", "ApprenticeEnchant", "5d86a6");
-            AddToggle("NecroConfig", "Necro Graves", "NecroEnchant", "565643");
-            AddToggle("ShadowConfig", "Shadow Darkness", "ShadowEnchant", "42356f");
-            AddToggle("AncientShadowConfig", "Ancient Shadow Orbs", "AncientShadowEnchant", "42356f");
-            AddToggle("MonkConfig", "Monk Dash", "MonkEnchant", "920520");
-            AddToggle("ShinobiConfig", "Shinobi Through Walls", "ShinobiEnchant", "935b18");
-            AddToggle("ShinobiTabiConfig", "Tabi Dash", "ShinobiEnchant", "935b18");
-            AddToggle("ShinobiClimbingConfig", "Tiger Climbing Gear", "ShinobiEnchant", "935b18");
-            AddToggle("SpookyConfig", "Spooky Scythes", "SpookyEnchant", "644e74");
+            AddToggle("ShadowHeader", ModContent.ItemType<ShadowForce>());
+            AddToggle("DarkArtConfig", ModContent.ItemType<DarkArtistEnchant>(), "9b5cb0");
+            AddToggle("ApprenticeConfig", ModContent.ItemType<ApprenticeEnchant>(), "5d86a6");
+            AddToggle("NecroConfig", ModContent.ItemType<NecroEnchant>(), "565643");
+            AddToggle("ShadowConfig", ModContent.ItemType<ShadowEnchant>(), "42356f");
+            AddToggle("AncientShadowConfig", ModContent.ItemType<AncientShadowEnchant>(), "42356f");
+            AddToggle("MonkConfig", ModContent.ItemType<MonkEnchant>(), "920520");
+            AddToggle("ShinobiConfig", ModContent.ItemType<ShinobiEnchant>(), "935b18");
+            AddToggle("ShinobiTabiConfig", ModContent.ItemType<ShinobiEnchant>(), "935b18");
+            AddToggle("ShinobiClimbingConfig", ModContent.ItemType<ShinobiEnchant>(), "935b18");
+            AddToggle("SpookyConfig", ModContent.ItemType<SpookyEnchant>(), "644e74");
 
-            AddToggle("SpiritHeader", "Force of Spirit", "SpiritForce", "ffffff");
-            AddToggle("ForbiddenConfig", "Forbidden Storm", "ForbiddenEnchant", "e7b21c");
-            AddToggle("HallowedConfig", "Hallowed Enchanted Sword Familiar", "HallowEnchant", "968564");
-            AddToggle("HallowSConfig", "Hallowed Shield", "HallowEnchant", "968564");
-            AddToggle("SilverConfig", "Silver Sword Familiar", "SilverEnchant", "b4b4cc");
-            AddToggle("SpectreConfig", "Spectre Orbs", "SpectreEnchant", "accdfc");
-            AddToggle("TikiConfig", "Tiki Minions", "TikiEnchant", "56A52B");
+            AddToggle("SpiritHeader", ModContent.ItemType<SpiritForce>());
+            AddToggle("ForbiddenConfig", ModContent.ItemType<ForbiddenEnchant>(), "e7b21c");
+            AddToggle("HallowedConfig", ModContent.ItemType<HallowEnchant>(), "968564");
+            AddToggle("HallowSConfig", ModContent.ItemType<HallowEnchant>(), "968564");
+            AddToggle("SilverConfig", ModContent.ItemType<SilverEnchant>(), "b4b4cc");
+            AddToggle("SpectreConfig", ModContent.ItemType<SpectreEnchant>(), "accdfc");
+            AddToggle("TikiConfig", ModContent.ItemType<TikiEnchant>(), "56A52B");
 
-            AddToggle("CosmoHeader", "Force of Cosmos", "CosmoForce", "ffffff");
-            AddToggle("MeteorConfig", "Meteor Shower", "MeteorEnchant", "5f4752");
-            AddToggle("NebulaConfig", "Nebula Boosters", "NebulaEnchant", "fe7ee5");
-            AddToggle("SolarConfig", "Solar Shield", "SolarEnchant", "fe9e23");
-            AddToggle("SolarFlareConfig", "Inflict Solar Flare", "SolarEnchant", "fe9e23");
-            AddToggle("StardustConfig", "Stardust Guardian", "StardustEnchant", "00aeee");
-            AddToggle("VortexSConfig", "Vortex Stealth", "VortexEnchant", "00f2aa");
-            AddToggle("VortexVConfig", "Vortex Voids", "VortexEnchant", "00f2aa");
+            AddToggle("CosmoHeader", ModContent.ItemType<CosmoForce>());
+            AddToggle("MeteorConfig", ModContent.ItemType<MeteorEnchant>(), "5f4752");
+            AddToggle("NebulaConfig", ModContent.ItemType<NebulaEnchant>(), "fe7ee5");
+            AddToggle("SolarConfig", ModContent.ItemType<SolarEnchant>(), "fe9e23");
+            AddToggle("SolarFlareConfig", ModContent.ItemType<SolarEnchant>(), "fe9e23");
+            AddToggle("StardustConfig", ModContent.ItemType<StardustEnchant>(), "00aeee");
+            AddToggle("VortexSConfig", ModContent.ItemType<VortexEnchant>(), "00f2aa");
+            AddToggle("VortexVConfig", ModContent.ItemType<VortexEnchant>(), "00f2aa");
 
             #endregion enchants
 
             #region masomode toggles
 
             //Masomode Header
-            AddToggle("MasoHeader", "Eternity Mode", "MutantStatue", "ffffff");
-            //AddToggle("MasoBossBG", "Mutant Bright Background", "Masochist", "ffffff");
-            AddToggle("MasoBossRecolors", "Boss Recolors (Toggle needs restart)", "Masochist", "ffffff");
-            AddToggle("MasoIconConfig", "Sinister Icon", "SinisterIcon", "ffffff");
-            AddToggle("MasoIconDropsConfig", "Sinister Icon Drops", "SinisterIcon", "ffffff");
-            AddToggle("MasoGrazeConfig", "Graze", "SparklingAdoration", "ffffff");
-            AddToggle("MasoDevianttHeartsConfig", "Attacks Spawn Homing Hearts", "SparklingAdoration", "ffffff");
+            AddToggle("MasoHeader", ModContent.ItemType<MutantStatue>());
+            //AddToggle("MasoBossBG", ModContent.ItemType<Masochist>());
+            AddToggle("MasoBossRecolors", ModContent.ItemType<Masochist>());
+            AddToggle("MasoIconConfig", ModContent.ItemType<SinisterIcon>());
+            AddToggle("MasoIconDropsConfig", ModContent.ItemType<SinisterIcon>());
+            AddToggle("MasoGrazeConfig", ModContent.ItemType<SparklingAdoration>());
+            AddToggle("MasoDevianttHeartsConfig", ModContent.ItemType<SparklingAdoration>());
 
             //supreme death fairy header
-            AddToggle("SupremeFairyHeader", "Supreme Deathbringer Fairy", "SupremeDeathbringerFairy", "ffffff");
-            AddToggle("MasoSlimeConfig", "Slimy Balls", "SlimyShield", "ffffff");
-            AddToggle("SlimeFallingConfig", "Increased Fall Speed", "SlimyShield", "ffffff");
-            AddToggle("MasoEyeConfig", "Scythes When Dashing", "AgitatingLens", "ffffff");
-            AddToggle("MasoHoneyConfig", "Honey When Hitting Enemies", "QueenStinger", "ffffff");
-            AddToggle("MasoSkeleConfig", "Skeletron Arms Minion", "NecromanticBrew", "ffffff");
+            AddToggle("SupremeFairyHeader", ModContent.ItemType<SupremeDeathbringerFairy>());
+            AddToggle("MasoSlimeConfig", ModContent.ItemType<SlimyShield>());
+            AddToggle("SlimeFallingConfig", ModContent.ItemType<SlimyShield>());
+            AddToggle("MasoEyeConfig", ModContent.ItemType<AgitatingLens>());
+            AddToggle("MasoHoneyConfig", ModContent.ItemType<QueenStinger>());
+            AddToggle("MasoSkeleConfig", ModContent.ItemType<NecromanticBrew>());
 
             //bionomic
-            AddToggle("BionomicHeader", "Bionomic Cluster", "BionomicCluster", "ffffff");
-            AddToggle("MasoConcoctionConfig", "Tim's Concoction", "TimsConcoction", "ffffff");
-            AddToggle("MasoCarrotConfig", "Carrot View", "OrdinaryCarrot", "ffffff");
-            AddToggle("MasoRainbowConfig", "Rainbow Slime Minion", "ConcentratedRainbowMatter", "ffffff");
-            AddToggle("MasoFrigidConfig", "Frostfireballs", "FrigidGemstone", "ffffff");
-            AddToggle("MasoNymphConfig", "Attacks Spawn Hearts", "NymphsPerfume", "ffffff");
-            AddToggle("MasoSqueakConfig", "Squeaky Toy On Hit", "SqueakyToy", "ffffff");
-            AddToggle("MasoPouchConfig", "Tentacles On Hit", "WretchedPouch", "ffffff");
-            AddToggle("MasoClippedConfig", "Inflict Clipped Wings", "WyvernFeather", "ffffff");
-            AddToggle("TribalCharmConfig", "Tribal Charm Auto Swing", "TribalCharm", "ffffff");
-            //AddToggle("WalletHeader", "Security Wallet", "SecurityWallet", "ffffff");
+            AddToggle("BionomicHeader", ModContent.ItemType<BionomicCluster>());
+            AddToggle("MasoConcoctionConfig", ModContent.ItemType<TimsConcoction>());
+            AddToggle("MasoCarrotConfig", ModContent.ItemType<OrdinaryCarrot>());
+            AddToggle("MasoRainbowConfig", ModContent.ItemType<ConcentratedRainbowMatter>());
+            AddToggle("MasoFrigidConfig", ModContent.ItemType<FrigidGemstone>());
+            AddToggle("MasoNymphConfig", ModContent.ItemType<NymphsPerfume>());
+            AddToggle("MasoSqueakConfig", ModContent.ItemType<SqueakyToy>());
+            AddToggle("MasoPouchConfig", ModContent.ItemType<WretchedPouch>());
+            AddToggle("MasoClippedConfig", ModContent.ItemType<WyvernFeather>());
+            AddToggle("TribalCharmConfig", ModContent.ItemType<TribalCharm>());
+            //AddToggle("WalletHeader", ModContent.ItemType<SecurityWallet>());
 
             //dubious
-            AddToggle("DubiousHeader", "Dubious Circuitry", "DubiousCircuitry", "ffffff");
-            AddToggle("MasoLightningConfig", "Inflict Lightning Rod", "GroundStick", "ffffff");
-            AddToggle("MasoProbeConfig", "Probes Minion", "GroundStick", "ffffff");
+            AddToggle("DubiousHeader", ModContent.ItemType<DubiousCircuitry>());
+            AddToggle("MasoLightningConfig", ModContent.ItemType<GroundStick>());
+            AddToggle("MasoProbeConfig", ModContent.ItemType<GroundStick>());
 
             //pure heart
-            AddToggle("PureHeartHeader", "Pure Heart", "PureHeart", "ffffff");
-            AddToggle("MasoEaterConfig", "Tiny Eaters", "CorruptHeart", "ffffff");
-            AddToggle("MasoBrainConfig", "Creeper Shield", "GuttedHeart", "ffffff");
+            AddToggle("PureHeartHeader", ModContent.ItemType<PureHeart>());
+            AddToggle("MasoEaterConfig", ModContent.ItemType<CorruptHeart>());
+            AddToggle("MasoBrainConfig", ModContent.ItemType<GuttedHeart>());
 
             //lump of flesh
-            AddToggle("LumpofFleshHeader", "Lump of Flesh", "LumpOfFlesh", "ffffff");
-            AddToggle("MasoPugentConfig", "Pungent Eye Minion", "LumpOfFlesh", "ffffff");
+            AddToggle("LumpofFleshHeader", ModContent.ItemType<LumpOfFlesh>());
+            AddToggle("MasoPugentConfig", ModContent.ItemType<LumpOfFlesh>());
 
             //chalice
-            AddToggle("ChaliceHeader", "Chalice of the Moon", "ChaliceoftheMoon", "ffffff");
-            AddToggle("MasoCultistConfig", "Cultist Minion", "ChaliceoftheMoon", "ffffff");
-            AddToggle("MasoPlantConfig", "Plantera Minion", "MagicalBulb", "ffffff");
-            AddToggle("MasoGolemConfig", "Lihzahrd Ground Pound", "LihzahrdTreasureBox", "ffffff");
-            AddToggle("MasoBoulderConfig", "Boulder Spray", "LihzahrdTreasureBox", "ffffff");
-            AddToggle("MasoCelestConfig", "Celestial Rune Support", "CelestialRune", "ffffff");
-            AddToggle("MasoVisionConfig", "Ancient Visions On Hit", "CelestialRune", "ffffff");
+            AddToggle("ChaliceHeader", ModContent.ItemType<ChaliceoftheMoon>());
+            AddToggle("MasoCultistConfig", ModContent.ItemType<ChaliceoftheMoon>());
+            AddToggle("MasoPlantConfig", ModContent.ItemType<MagicalBulb>());
+            AddToggle("MasoGolemConfig", ModContent.ItemType<LihzahrdTreasureBox>());
+            AddToggle("MasoBoulderConfig", ModContent.ItemType<LihzahrdTreasureBox>());
+            AddToggle("MasoCelestConfig", ModContent.ItemType<CelestialRune>());
+            AddToggle("MasoVisionConfig", ModContent.ItemType<CelestialRune>());
 
             //heart of the masochist
-            AddToggle("HeartHeader", "Heart of the Eternal", "HeartoftheMasochist", "ffffff");
-            AddToggle("MasoPump", "Pumpking's Cape Support", "PumpkingsCape", "ffffff");
-            AddToggle("MasoFlockoConfig", "Flocko Minion", "IceQueensCrown", "ffffff");
-            AddToggle("MasoUfoConfig", "Saucer Minion", "SaucerControlConsole", "ffffff");
-            AddToggle("MasoGravConfig", "Gravity Control", "GalacticGlobe", "ffffff");
-            AddToggle("MasoGrav2Config", "Stabilized Gravity", "GalacticGlobe", "ffffff");
-            AddToggle("MasoTrueEyeConfig", "True Eyes Minion", "GalacticGlobe", "ffffff");
+            AddToggle("HeartHeader", ModContent.ItemType<HeartoftheMasochist>());
+            AddToggle("MasoPump", ModContent.ItemType<PumpkingsCape>());
+            AddToggle("MasoFlockoConfig", ModContent.ItemType<IceQueensCrown>());
+            AddToggle("MasoUfoConfig", ModContent.ItemType<SaucerControlConsole>());
+            AddToggle("MasoGravConfig", ModContent.ItemType<GalacticGlobe>());
+            AddToggle("MasoGrav2Config", ModContent.ItemType<GalacticGlobe>());
+            AddToggle("MasoTrueEyeConfig", ModContent.ItemType<GalacticGlobe>());
 
             //cyclonic fin
-            AddToggle("CyclonicHeader", "Abominable Wand", "CyclonicFin", "ffffff");
-            AddToggle("MasoFishronConfig", "Spectral Abominationn", "CyclonicFin", "ffffff");
+            AddToggle("CyclonicHeader", ModContent.ItemType<CyclonicFin>());
+            AddToggle("MasoFishronConfig", ModContent.ItemType<CyclonicFin>());
 
             //mutant armor
-            AddToggle("MutantArmorHeader", "True Mutant Armor", "HeartoftheMasochist", "ffffff");
-            AddToggle("MasoAbomConfig", "Abominationn Minion", "MutantMask", "ffffff");
-            AddToggle("MasoRingConfig", "Phantasmal Ring Minion", "MutantMask", "ffffff");
-            AddToggle("MasoReviveDeathrayConfig", "Deathray When Revived", "MutantMask", "ffffff");
+            AddToggle("MutantArmorHeader", ModContent.ItemType<HeartoftheMasochist>());
+            AddToggle("MasoAbomConfig", ModContent.ItemType<MutantMask>());
+            AddToggle("MasoRingConfig", ModContent.ItemType<MutantMask>());
+            AddToggle("MasoReviveDeathrayConfig", ModContent.ItemType<MutantMask>());
 
             #endregion masomode toggles
 
             #region soul toggles
 
-            AddToggle("SoulHeader", "Souls", "UniverseSoul", "ffffff");
-            AddToggle("MeleeConfig", "Melee Speed", "GladiatorsSoul", "ffffff");
-            AddToggle("MagmaStoneConfig", "Magma Stone", "GladiatorsSoul", "ffffff");
-            AddToggle("YoyoBagConfig", "Yoyo Bag", "GladiatorsSoul", "ffffff");
-            AddToggle("SniperConfig", "Sniper Scope", "SnipersSoul", "ffffff");
-            AddToggle("UniverseConfig", "Universe Attack Speed", "UniverseSoul", "ffffff");
-            AddToggle("MiningHuntConfig", "Mining Hunter Buff", "MinerEnchant", "ffffff");
-            AddToggle("MiningDangerConfig", "Mining Dangersense Buff", "MinerEnchant", "ffffff");
-            AddToggle("MiningSpelunkConfig", "Mining Spelunker Buff", "MinerEnchant", "ffffff");
-            AddToggle("MiningShineConfig", "Mining Shine Buff", "MinerEnchant", "ffffff");
-            AddToggle("BuilderConfig", "Builder Mode", "WorldShaperSoul", "ffffff");
-            AddToggle("DefenseSporeConfig", "Spore Sac", "ColossusSoul", "ffffff");
-            AddToggle("DefenseStarConfig", "Stars On Hit", "ColossusSoul", "ffffff");
-            AddToggle("DefenseBeeConfig", "Bees On Hit", "ColossusSoul", "ffffff");
-            AddToggle("DefensePanicConfig", "Panic On Hit", "ColossusSoul", "ffffff");
-            AddToggle("RunSpeedConfig", "Higher Base Run Speed", "SupersonicSoul", "ffffff");
-            AddToggle("MomentumConfig", "No Momentum", "SupersonicSoul", "ffffff");
-            AddToggle("SupersonicConfig", "Supersonic Speed Boosts", "SupersonicSoul", "ffffff");
-            AddToggle("SupersonicJumpsConfig", "Supersonic Jumps", "SupersonicSoul", "ffffff");
-            AddToggle("SupersonicRocketBootsConfig", "Supersonic Rocket Boots", "SupersonicSoul", "ffffff");
-            AddToggle("SupersonicCarpetConfig", "Supersonic Carpet", "SupersonicSoul", "ffffff");
-            AddToggle("TrawlerConfig", "Trawler Extra Lures", "TrawlerSoul", "ffffff");
-            AddToggle("EternityConfig", "Eternity Stacking", "EternitySoul", "ffffff");
+            AddToggle("SoulHeader", ModContent.ItemType<UniverseSoul>());
+            AddToggle("MeleeConfig", ModContent.ItemType<GladiatorsSoul>());
+            AddToggle("MagmaStoneConfig", ModContent.ItemType<GladiatorsSoul>());
+            AddToggle("YoyoBagConfig", ModContent.ItemType<GladiatorsSoul>());
+            AddToggle("SniperConfig", ModContent.ItemType<SnipersSoul>());
+            AddToggle("UniverseConfig", ModContent.ItemType<UniverseSoul>());
+            AddToggle("MiningHuntConfig", ModContent.ItemType<MinerEnchant>());
+            AddToggle("MiningDangerConfig", ModContent.ItemType<MinerEnchant>());
+            AddToggle("MiningSpelunkConfig", ModContent.ItemType<MinerEnchant>());
+            AddToggle("MiningShineConfig", ModContent.ItemType<MinerEnchant>());
+            AddToggle("BuilderConfig", ModContent.ItemType<WorldShaperSoul>());
+            AddToggle("DefenseSporeConfig", ModContent.ItemType<ColossusSoul>());
+            AddToggle("DefenseStarConfig", ModContent.ItemType<ColossusSoul>());
+            AddToggle("DefenseBeeConfig", ModContent.ItemType<ColossusSoul>());
+            AddToggle("DefensePanicConfig", ModContent.ItemType<ColossusSoul>());
+            AddToggle("RunSpeedConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggle("MomentumConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggle("SupersonicConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggle("SupersonicJumpsConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggle("SupersonicRocketBootsConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggle("SupersonicCarpetConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggle("TrawlerConfig", ModContent.ItemType<TrawlerSoul>());
+            AddToggle("EternityConfig", ModContent.ItemType<EternitySoul>());
 
             #endregion soul toggles
 
             #region pet toggles
 
-            AddToggle("PetHeader", "Pets", 2420, "ffffff");
-            AddToggle("PetCatConfig", "Black Cat Pet", 1810, "ffffff");
-            AddToggle("PetCubeConfig", "Companion Cube Pet", 3628, "ffffff");
-            AddToggle("PetCurseSapConfig", "Cursed Sapling Pet", 1837, "ffffff");
-            AddToggle("PetDinoConfig", "Dino Pet", 1242, "ffffff");
-            AddToggle("PetDragonConfig", "Dragon Pet", 3857, "ffffff");
-            AddToggle("PetEaterConfig", "Eater Pet", 994, "ffffff");
-            AddToggle("PetEyeSpringConfig", "Eye Spring Pet", 1311, "ffffff");
-            AddToggle("PetFaceMonsterConfig", "Face Monster Pet", 3060, "ffffff");
-            AddToggle("PetGatoConfig", "Gato Pet", 3855, "ffffff");
-            AddToggle("PetHornetConfig", "Hornet Pet", 1170, "ffffff");
-            AddToggle("PetLizardConfig", "Lizard Pet", 1172, "ffffff");
-            AddToggle("PetMinitaurConfig", "Mini Minotaur Pet", 2587, "ffffff");
-            AddToggle("PetParrotConfig", "Parrot Pet", 1180, "ffffff");
-            AddToggle("PetPenguinConfig", "Penguin Pet", 669, "ffffff");
-            AddToggle("PetPupConfig", "Puppy Pet", 1927, "ffffff");
-            AddToggle("PetSeedConfig", "Seedling Pet", 1182, "ffffff");
-            AddToggle("PetDGConfig", "Skeletron Pet", 1169, "ffffff");
-            AddToggle("PetSnowmanConfig", "Snowman Pet", 1312, "ffffff");
-            AddToggle("PetGrinchConfig", "Grinch Pet", ItemID.BabyGrinchMischiefWhistle, "ffffff");
-            AddToggle("PetSpiderConfig", "Spider Pet", 1798, "ffffff");
-            AddToggle("PetSquashConfig", "Squashling Pet", 1799, "ffffff");
-            AddToggle("PetTikiConfig", "Tiki Pet", 1171, "ffffff");
-            AddToggle("PetShroomConfig", "Truffle Pet", 1181, "ffffff");
-            AddToggle("PetTurtleConfig", "Turtle Pet", 753, "ffffff");
-            AddToggle("PetZephyrConfig", "Zephyr Fish Pet", 2420, "ffffff");
-            AddToggle("PetHeartConfig", "Crimson Heart Pet", 3062, "ffffff");
-            AddToggle("PetNaviConfig", "Fairy Pet", 425, "ffffff");
-            AddToggle("PetFlickerConfig", "Flickerwick Pet", 3856, "ffffff");
-            AddToggle("PetLanturnConfig", "Magic Lantern Pet", 3043, "ffffff");
-            AddToggle("PetOrbConfig", "Shadow Orb Pet", 115, "ffffff");
-            AddToggle("PetSuspEyeConfig", "Suspicious Eye Pet", 3577, "ffffff");
-            AddToggle("PetWispConfig", "Wisp Pet", 1183, "ffffff");
+            AddToggle("PetHeader", 2420);
+            AddToggle("PetCatConfig", 1810);
+            AddToggle("PetCubeConfig", 3628);
+            AddToggle("PetCurseSapConfig", 1837);
+            AddToggle("PetDinoConfig", 1242);
+            AddToggle("PetDragonConfig", 3857);
+            AddToggle("PetEaterConfig", 994);
+            AddToggle("PetEyeSpringConfig", 1311);
+            AddToggle("PetFaceMonsterConfig", 3060);
+            AddToggle("PetGatoConfig", 3855);
+            AddToggle("PetHornetConfig", 1170);
+            AddToggle("PetLizardConfig", 1172);
+            AddToggle("PetMinitaurConfig", 2587);
+            AddToggle("PetParrotConfig", 1180);
+            AddToggle("PetPenguinConfig", 669);
+            AddToggle("PetPupConfig", 1927);
+            AddToggle("PetSeedConfig", 1182);
+            AddToggle("PetDGConfig", 1169);
+            AddToggle("PetSnowmanConfig", 1312);
+            AddToggle("PetGrinchConfig", ItemID.BabyGrinchMischiefWhistle);
+            AddToggle("PetSpiderConfig", 1798);
+            AddToggle("PetSquashConfig", 1799);
+            AddToggle("PetTikiConfig", 1171);
+            AddToggle("PetShroomConfig", 1181);
+            AddToggle("PetTurtleConfig", 753);
+            AddToggle("PetZephyrConfig", 2420);
+            AddToggle("PetHeartConfig", 3062);
+            AddToggle("PetNaviConfig", 425);
+            AddToggle("PetFlickerConfig", 3856);
+            AddToggle("PetLanturnConfig", 3043);
+            AddToggle("PetOrbConfig", 115);
+            AddToggle("PetSuspEyeConfig", 3577);
+            AddToggle("PetWispConfig", 1183);
 
             #endregion pet toggles
 
             #region patreon toggles
 
-            AddToggle("PatreonHeader", "Patreon Items (Toggles need restart)", "RoombaPet", "ffffff");
-            AddToggle("PatreonRoomba", "Roomba", "RoombaPet", "ffffff");
-            AddToggle("PatreonOrb", "Computation Orb", "ComputationOrb", "ffffff");
-            AddToggle("PatreonFishingRod", "Miss Drakovi's Fishing Pole", "MissDrakovisFishingPole", "ffffff");
-            AddToggle("PatreonDoor", "Squidward Door", "SquidwardDoor", "ffffff");
-            AddToggle("PatreonWolf", "Paradox Wolf Soul", "ParadoxWolfSoul", "ffffff");
-            AddToggle("PatreonDove", "Fig Branch", "FigBranch", "ffffff");
-            AddToggle("PatreonKingSlime", "Medallion of the Fallen King", "MedallionoftheFallenKing", "ffffff");
-            AddToggle("PatreonFishron", "Staff Of Unleashed Ocean", "StaffOfUnleashedOcean", "ffffff");
-            AddToggle("PatreonPlant", "Piranha Plant Voodoo Doll", "PiranhaPlantVoodooDoll", "ffffff");
+            AddToggle("PatreonHeader", ModContent.ItemType<RoombaPet>());
+            AddToggle("PatreonRoomba", ModContent.ItemType<RoombaPet>());
+            AddToggle("PatreonOrb", ModContent.ItemType<ComputationOrb>());
+            AddToggle("PatreonFishingRod", ModContent.ItemType<MissDrakovisFishingPole>());
+            AddToggle("PatreonDoor", ModContent.ItemType<SquidwardDoor>());
+            AddToggle("PatreonWolf", ModContent.ItemType<ParadoxWolfSoul>());
+            AddToggle("PatreonDove", ModContent.ItemType<FigBranch>());
+            AddToggle("PatreonKingSlime", ModContent.ItemType<MedallionoftheFallenKing>());
+            AddToggle("PatreonFishron", ModContent.ItemType<StaffOfUnleashedOcean>());
+            AddToggle("PatreonPlant", ModContent.ItemType<PiranhaPlantVoodooDoll>());
 
             #endregion patreon toggles
 
@@ -372,18 +388,10 @@ namespace FargowiltasSouls
             }
         }
 
-        public void AddToggle(String toggle, String name, String item, String color)
+        public void AddToggle(string toggle, int item, string color = "ffffff")
         {
-            ModTranslation text = CreateTranslation(toggle);
-            text.SetDefault("[i:" + Instance.ItemType(item) + "][c/" + color + ": " + name + "]");
-            AddTranslation(text);
-        }
-
-        //for vanilla items reeeee
-        public void AddToggle(String toggle, String name, int item, String color)
-        {
-            ModTranslation text = CreateTranslation(toggle);
-            text.SetDefault("[i:" + item + "][c/" + color + ": " + name + "]");
+            ModTranslation text = CreateTranslation(toggle + "Toggle");
+            text.SetDefault($"[i:{item}][c/{color}:{FargoLangHelper.GetToggleText(toggle)}]");
             AddTranslation(text);
         }
 

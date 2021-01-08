@@ -7,10 +7,13 @@ namespace FargowiltasSouls.Utilities
     {
         internal enum LangCategory
         {
-            Hotkey
+            Hotkey,
+            Toggle // This shouldn't be directly used outside of AddToggle
         }
 
         internal static string GetHotkeyText(string key) => GetFargoTextByCategory(LangCategory.Hotkey, key);
+
+        internal static string GetToggleText(string key) => GetFargoTextByCategory(LangCategory.Toggle, key);
 
         /// <summary>
         /// Returns <see cref="GetModText(Mod, string)"/> with the mod being <see cref="Fargowiltas.Instance"/> and the key being <c>$"{category}.{remainderKey}"</c>.
