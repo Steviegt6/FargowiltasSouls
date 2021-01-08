@@ -23,6 +23,7 @@ using Fargowiltas.Items.Misc;
 using Fargowiltas.Items.Explosives;
 using Microsoft.Xna.Framework.Graphics;
 using FargowiltasSouls.Items.Dyes;
+using FargowiltasSouls.Utilities;
 
 namespace FargowiltasSouls
 {
@@ -83,22 +84,11 @@ namespace FargowiltasSouls
             Filters.Scene["FargowiltasSouls:TimeStop"] = new Filter(
                 new TimeStopShader("FilterMiniTower").UseColor(0.2f, 0.2f, 0.2f).UseOpacity(0.7f), EffectPriority.VeryHigh);
 
-            if (Language.ActiveCulture == GameCulture.Chinese)
-            {
-                FreezeKey = RegisterHotKey("冻结时间", "P");
-                GoldKey = RegisterHotKey("金身", "O");
-                SmokeBombKey = RegisterHotKey("Throw Smoke Bomb", "I");
-                BetsyDashKey = RegisterHotKey("Betsy Dash", "C");
-                MutantBombKey = RegisterHotKey("Mutant Bomb", "Z");
-            }
-            else
-            {
-                FreezeKey = RegisterHotKey("Freeze Time", "P");
-                GoldKey = RegisterHotKey("Turn Gold", "O");
-                SmokeBombKey = RegisterHotKey("Throw Smoke Bomb", "I");
-                BetsyDashKey = RegisterHotKey("Fireball Dash", "C");
-                MutantBombKey = RegisterHotKey("Mutant Bomb", "Z");
-            }
+            FreezeKey = RegisterHotKey(FargoLangHelper.GetHotkeyText("FreezeKey"), "P");
+            GoldKey = RegisterHotKey(FargoLangHelper.GetHotkeyText("GoldKey"), "O");
+            SmokeBombKey = RegisterHotKey(FargoLangHelper.GetHotkeyText("SmokeBombKey"), "I");
+            BetsyDashKey = RegisterHotKey(FargoLangHelper.GetHotkeyText("BetsyDashKey"), "C");
+            MutantBombKey = RegisterHotKey(FargoLangHelper.GetHotkeyText("MutantBombKey"), "Z");
 
             #region Toggles
 
@@ -338,6 +328,7 @@ namespace FargowiltasSouls
             #endregion pet toggles
 
             #region patreon toggles
+
             AddToggle("PatreonHeader", "Patreon Items (Toggles need restart)", "RoombaPet", "ffffff");
             AddToggle("PatreonRoomba", "Roomba", "RoombaPet", "ffffff");
             AddToggle("PatreonOrb", "Computation Orb", "ComputationOrb", "ffffff");
@@ -348,6 +339,7 @@ namespace FargowiltasSouls
             AddToggle("PatreonKingSlime", "Medallion of the Fallen King", "MedallionoftheFallenKing", "ffffff");
             AddToggle("PatreonFishron", "Staff Of Unleashed Ocean", "StaffOfUnleashedOcean", "ffffff");
             AddToggle("PatreonPlant", "Piranha Plant Voodoo Doll", "PiranhaPlantVoodooDoll", "ffffff");
+
             #endregion patreon toggles
 
             #endregion Toggles
@@ -631,7 +623,9 @@ namespace FargowiltasSouls
                 Logger.Warn("FargowiltasSouls PostSetupContent Error: " + e.StackTrace + e.Message);
             }
         }
-        static float ColorTimer;
+
+        private static float ColorTimer;
+
         public static Color EModeColor()
         {
             Color mutantColor = new Color(28, 222, 152);
@@ -650,6 +644,7 @@ namespace FargowiltasSouls
             else
                 return Color.Lerp(deviColor, mutantColor, (ColorTimer - 200) / 100);
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(this);
@@ -1024,7 +1019,7 @@ namespace FargowiltasSouls
                             Main.item[i].position.Y += Main.rand.NextFloat(Main.player[p].Hitbox.Height);
                         }
                     }
-                    break; 
+                    break;
 
                 case 77: //server side spawning fishron EX
                     if (Main.netMode == NetmodeID.Server)

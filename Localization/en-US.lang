@@ -1,0 +1,8 @@
+﻿# Hotkeys
+# Localizations with a '#' before them means that translations are needed
+
+Hotkey.FreezeKey=Freeze Time
+Hotkey.GoldKey=Turn Gold
+Hotkey.SmokeBombKey=Throw Smoke Bomb
+Hotkey.BetsyDashKey=Fireball Dash
+Hotkey.MutantBombKey=Mutant Bomb
