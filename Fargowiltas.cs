@@ -40,6 +40,10 @@ using FargowiltasSouls.Patreon.ManliestDove;
 using FargowiltasSouls.Patreon.Catsounds;
 using FargowiltasSouls.Patreon.DemonKing;
 using FargowiltasSouls.Patreon.LaBonez;
+using System.Reflection;
+using Terraria.ModLoader.Core;
+using System.Linq;
+using System.Text;
 
 namespace FargowiltasSouls
 {
@@ -105,6 +109,44 @@ namespace FargowiltasSouls
             SmokeBombKey = RegisterHotKey(FargoLangHelper.GetHotkeyText("SmokeBombKey"), "I");
             BetsyDashKey = RegisterHotKey(FargoLangHelper.GetHotkeyText("BetsyDashKey"), "C");
             MutantBombKey = RegisterHotKey(FargoLangHelper.GetHotkeyText("MutantBombKey"), "Z");
+
+            TmodFile tModFile = typeof(Fargowiltas).GetProperty("File", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(Instance) as TmodFile;
+
+            foreach (TmodFile.FileEntry translationFile in tModFile.Where(entry => Path.GetExtension(entry.Name) == ".fargolang"))
+            {
+                var modTranslationDictionary = new Dictionary<string, ModTranslation>();
+                string translationFileContents = Encoding.UTF8.GetString(tModFile.GetBytes(translationFile));
+                GameCulture culture = GameCulture.FromName(Path.GetFileNameWithoutExtension(translationFile.Name));
+
+                using (StringReader reader = new StringReader(translationFileContents))
+                {
+                    string line;
+
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        int split = line.IndexOf('=');
+
+                        if (split < 0)
+                            continue;
+
+                        string key = line.Substring(0, split).Trim().Replace(' ', '_');
+                        string value = line.Substring(split + 1);
+
+                        if (value.Length == 0)
+                            continue;
+
+                        value = value.Replace("\\n", "\n");
+
+                        if (!modTranslationDictionary.TryGetValue(key, out ModTranslation translation))
+                            modTranslationDictionary[key] = translation = CreateTranslation(key);
+                        Logger.Debug(value);
+                        translation.AddTranslation(culture, value);
+                    }
+                }
+
+                foreach (ModTranslation translation in modTranslationDictionary.Values)
+                    AddTranslation(translation);
+            }
 
             #region Toggles
 
@@ -360,6 +402,8 @@ namespace FargowiltasSouls
 
             #endregion Toggles
 
+            AddConfig("SoulConfig", new SoulConfig());
+
             if (Main.netMode != NetmodeID.Server)
             {
                 #region shaders
@@ -555,9 +599,9 @@ namespace FargowiltasSouls
                 ThoriumCompatibility = new ThoriumCompatibility(this).TryLoad() as ThoriumCompatibility;
                 SoACompatibility = new SoACompatibility(this).TryLoad() as SoACompatibility;
                 MasomodeEXCompatibility = new MasomodeEXCompatibility(this).TryLoad() as MasomodeEXCompatibility;
-                BossChecklistCompatibility = (BossChecklistCompatibility)new BossChecklistCompatibility(this).TryLoad();
+                BossChecklistCompatibility = new BossChecklistCompatibility(this).TryLoad() as BossChecklistCompatibility;
 
-                BossChecklistCompatibility.Initialize();
+                BossChecklistCompatibility?.Initialize();
 
                 DebuffIDs = new List<int> { 20, 22, 23, 24, 36, 39, 44, 46, 47, 67, 68, 69, 70, 80,
                     88, 94, 103, 137, 144, 145, 148, 149, 156, 160, 163, 164, 195, 196, 197, 199 };
