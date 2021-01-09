@@ -12,9 +12,6 @@ namespace FargowiltasSouls
         public override ConfigScope Mode => ConfigScope.ClientSide;
         public static SoulConfig Instance;
 
-        // We have to manually add this config for our localization to work properly because tML is absolute utter garbage.
-        public override bool Autoload(ref string name) => false;
-
         private void SetAll(bool val)
         {
             //bool backgroundValue = MutantBackground;

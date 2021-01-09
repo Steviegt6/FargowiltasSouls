@@ -31,6 +31,11 @@ using FargowiltasSouls.Items.Tiles;
 using FargowiltasSouls.Items.Misc;
 using FargowiltasSouls.Items.Armor;
 using FargowiltasSouls.Items.Accessories.Souls;
+using System.Reflection;
+using Terraria.ModLoader.Core;
+using System.Linq;
+using System.Text;
+using FargowiltasSouls.DataStructures;
 using FargowiltasSouls.Patreon.Gittle;
 using FargowiltasSouls.Patreon.Daawnz;
 using FargowiltasSouls.Patreon.Sasha;
@@ -40,10 +45,6 @@ using FargowiltasSouls.Patreon.ManliestDove;
 using FargowiltasSouls.Patreon.Catsounds;
 using FargowiltasSouls.Patreon.DemonKing;
 using FargowiltasSouls.Patreon.LaBonez;
-using System.Reflection;
-using Terraria.ModLoader.Core;
-using System.Linq;
-using System.Text;
 
 namespace FargowiltasSouls
 {
@@ -150,259 +151,253 @@ namespace FargowiltasSouls
 
             #region Toggles
 
-            ModifyToggleTranslation("PresetHeader", ModContent.ItemType<Masochist>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Preset Configurations"), "PresetHeader", ModContent.ItemType<Masochist>());
 
             #region enchants
 
-            ModifyToggleTranslation("WoodHeader", ModContent.ItemType<TimberForce>());
-            ModifyToggleTranslation("BorealConfig", ModContent.ItemType<BorealWoodEnchant>(), "8B7464");
-            ModifyToggleTranslation("MahoganyConfig", ModContent.ItemType<RichMahoganyEnchant>(), "b56c64");
-            ModifyToggleTranslation("EbonConfig", ModContent.ItemType<EbonwoodEnchant>(), "645a8d");
-            ModifyToggleTranslation("ShadeConfig", ModContent.ItemType<ShadewoodEnchant>(), "586876");
-            ModifyToggleTranslation("ShadeOnHitConfig", ModContent.ItemType<ShadewoodEnchant>(), "586876");
-            ModifyToggleTranslation("PalmConfig", ModContent.ItemType<PalmWoodEnchant>(), "b78d56");
-            ModifyToggleTranslation("PearlConfig", ModContent.ItemType<PearlwoodEnchant>(), "ad9a5f");
+            AddToggleTags(new CultureLocalizationInfo(english: "Patreon Items"), "PatreonHeader", ModContent.ItemType<RoombaPet>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Roomba"), "PatreonRoomba", ModContent.ItemType<RoombaPet>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Computation Orb"), "PatreonOrb", ModContent.ItemType<ComputationOrb>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Miss Drakovi's Fishing Pole"), "PatreonFishingRod", ModContent.ItemType<MissDrakovisFishingPole>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Squidward Door"), "PatreonDoor", ModContent.ItemType<SquidwardDoor>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Paradox Wolf Soul"), "PatreonWolf", ModContent.ItemType<ParadoxWolfSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Fig Branch"), "PatreonDove", ModContent.ItemType<FigBranch>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Medallion of the Fallen King"), "PatreonKingSlime", ModContent.ItemType<MedallionoftheFallenKing>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Staff Of Unleashed Ocean"), "PatreonFishron", ModContent.ItemType<StaffOfUnleashedOcean>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Piranha Plant Voodoo Doll"), "PatreonPlant", ModContent.ItemType<PiranhaPlantVoodooDoll>());
 
-            ModifyToggleTranslation("EarthHeader", ModContent.ItemType<EarthForce>());
-            ModifyToggleTranslation("AdamantiteConfig", ModContent.ItemType<AdamantiteEnchant>(), "dd557d");
-            ModifyToggleTranslation("CobaltConfig", ModContent.ItemType<CobaltEnchant>(), "3da4c4");
-            ModifyToggleTranslation("AncientCobaltConfig", ModContent.ItemType<AncientCobaltEnchant>(), "354c74");
-            ModifyToggleTranslation("MythrilConfig", ModContent.ItemType<MythrilEnchant>(), "9dd290");
-            ModifyToggleTranslation("OrichalcumConfig", ModContent.ItemType<OrichalcumEnchant>(), "eb3291");
-            ModifyToggleTranslation("PalladiumConfig", ModContent.ItemType<PalladiumEnchant>(), "f5ac28");
-            ModifyToggleTranslation("PalladiumOrbConfig", ModContent.ItemType<PalladiumEnchant>(), "f5ac28");
-            ModifyToggleTranslation("TitaniumConfig", ModContent.ItemType<TitaniumEnchant>(), "828c88");
+            AddToggleTags(new CultureLocalizationInfo(english: "Force of Timber"), "WoodHeader", ModContent.ItemType<TimberForce>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Boreal Snowballs"), "BorealConfig", ModContent.ItemType<BorealWoodEnchant>(), "8B7464");
+            AddToggleTags(new CultureLocalizationInfo(english: "Mahogany Hook Speed"), "MahoganyConfig", ModContent.ItemType<RichMahoganyEnchant>(), "b56c64");
+            AddToggleTags(new CultureLocalizationInfo(english: "Ebonwood Shadowflame"), "EbonConfig", ModContent.ItemType<EbonwoodEnchant>(), "645a8d");
+            AddToggleTags(new CultureLocalizationInfo(english: "Blood Geyser On Hit"), "ShadeConfig", ModContent.ItemType<ShadewoodEnchant>(), "586876");
+            AddToggleTags(new CultureLocalizationInfo(english: "Proximity Triggers On Hit Effects"), "ShadeOnHitConfig", ModContent.ItemType<ShadewoodEnchant>(), "586876");
+            AddToggleTags(new CultureLocalizationInfo(english: "Palmwood Sentry"), "PalmConfig", ModContent.ItemType<PalmWoodEnchant>(), "b78d56");
+            AddToggleTags(new CultureLocalizationInfo(english: "Pearlwood Rain"), "PearlConfig", ModContent.ItemType<PearlwoodEnchant>(), "ad9a5f");
 
-            ModifyToggleTranslation("TerraHeader", ModContent.ItemType<TerraForce>());
-            ModifyToggleTranslation("CopperConfig", ModContent.ItemType<CopperEnchant>(), "d56617");
-            ModifyToggleTranslation("IronMConfig", ModContent.ItemType<IronEnchant>(), "988e83");
-            ModifyToggleTranslation("IronSConfig", ModContent.ItemType<IronEnchant>(), "988e83");
-            ModifyToggleTranslation("CthulhuShield", ModContent.ItemType<IronEnchant>(), "988e83");
-            ModifyToggleTranslation("TinConfig", ModContent.ItemType<TinEnchant>(), "a28b4e");
-            ModifyToggleTranslation("TungstenConfig", ModContent.ItemType<TungstenEnchant>(), "b0d2b2");
-            ModifyToggleTranslation("TungstenProjConfig", ModContent.ItemType<TungstenEnchant>(), "b0d2b2");
-            ModifyToggleTranslation("ObsidianConfig", ModContent.ItemType<ObsidianEnchant>(), "453e73");
+            AddToggleTags(new CultureLocalizationInfo(english: "Force of Earth"), "EarthHeader", ModContent.ItemType<EarthForce>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Adamantite Projectile Splitting"), "AdamantiteConfig", ModContent.ItemType<AdamantiteEnchant>(), "dd557d");
+            AddToggleTags(new CultureLocalizationInfo(english: "Cobalt Shards"), "CobaltConfig", ModContent.ItemType<CobaltEnchant>(), "3da4c4");
+            AddToggleTags(new CultureLocalizationInfo(english: "Ancient Cobalt Stingers"), "AncientCobaltConfig", ModContent.ItemType<AncientCobaltEnchant>(), "354c74");
+            AddToggleTags(new CultureLocalizationInfo(english: "Mythril Weapon Speed"), "MythrilConfig", ModContent.ItemType<MythrilEnchant>(), "9dd290");
+            AddToggleTags(new CultureLocalizationInfo(english: "Orichalcum Petals"), "OrichalcumConfig", ModContent.ItemType<OrichalcumEnchant>(), "eb3291");
+            AddToggleTags(new CultureLocalizationInfo(english: "Palladium Healing"), "PalladiumConfig", ModContent.ItemType<PalladiumEnchant>(), "f5ac28");
+            AddToggleTags(new CultureLocalizationInfo(english: "Palladium Orbs"), "PalladiumOrbConfig", ModContent.ItemType<PalladiumEnchant>(), "f5ac28");
+            AddToggleTags(new CultureLocalizationInfo(english: "Titanium Shadow Dodge"), "TitaniumConfig", ModContent.ItemType<TitaniumEnchant>(), "828c88");
 
-            ModifyToggleTranslation("WillHeader", ModContent.ItemType<WillForce>());
-            ModifyToggleTranslation("GladiatorConfig", ModContent.ItemType<GladiatorEnchant>(), "9c924e");
-            ModifyToggleTranslation("GoldConfig", ModContent.ItemType<GoldEnchant>(), "e7b21c");
-            ModifyToggleTranslation("HuntressConfig", ModContent.ItemType<HuntressEnchant>(), "7ac04c");
-            ModifyToggleTranslation("ValhallaConfig", ModContent.ItemType<ValhallaKnightEnchant>(), "93651e");
-            ModifyToggleTranslation("SquirePanicConfig", ModContent.ItemType<SquireEnchant>(), "948f8c");
+            AddToggleTags(new CultureLocalizationInfo(english: "Terra Force"), "TerraHeader", ModContent.ItemType<TerraForce>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Copper Lightning"), "CopperConfig", ModContent.ItemType<CopperEnchant>(), "d56617");
+            AddToggleTags(new CultureLocalizationInfo(english: "Iron Magnet"), "IronMConfig", ModContent.ItemType<IronEnchant>(), "988e83");
+            AddToggleTags(new CultureLocalizationInfo(english: "Iron Shield"), "IronSConfig", ModContent.ItemType<IronEnchant>(), "988e83");
+            AddToggleTags(new CultureLocalizationInfo(english: "Shield of Cthulhu"), "CthulhuShield", ModContent.ItemType<IronEnchant>(), "988e83");
+            AddToggleTags(new CultureLocalizationInfo(english: "Tin Crits"), "TinConfig", ModContent.ItemType<TinEnchant>(), "a28b4e");
+            AddToggleTags(new CultureLocalizationInfo(english: "Tungsten Item Effect"), "TungstenConfig", ModContent.ItemType<TungstenEnchant>(), "b0d2b2");
+            AddToggleTags(new CultureLocalizationInfo(english: "Tungsten Projectile Effect"), "TungstenProjConfig", ModContent.ItemType<TungstenEnchant>(), "b0d2b2");
+            AddToggleTags(new CultureLocalizationInfo(english: "Obsidian Explosions"), "ObsidianConfig", ModContent.ItemType<ObsidianEnchant>(), "453e73");
 
-            ModifyToggleTranslation("LifeHeader", ModContent.ItemType<LifeForce>());
-            ModifyToggleTranslation("BeeConfig", ModContent.ItemType<BeeEnchant>(), "FEF625");
-            ModifyToggleTranslation("BeetleConfig", ModContent.ItemType<BeetleEnchant>(), "6D5C85");
-            ModifyToggleTranslation("CactusConfig", ModContent.ItemType<CactusEnchant>(), "799e1d");
-            ModifyToggleTranslation("PumpkinConfig", ModContent.ItemType<PumpkinEnchant>(), "e3651c");
-            ModifyToggleTranslation("SpiderConfig", ModContent.ItemType<SpiderEnchant>(), "6d4e45");
-            ModifyToggleTranslation("TurtleConfig", ModContent.ItemType<TurtleEnchant>(), "f89c5c");
+            AddToggleTags(new CultureLocalizationInfo(english: "Force of Will"), "WillHeader", ModContent.ItemType<WillForce>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Gladiator Rain"), "GladiatorConfig", ModContent.ItemType<GladiatorEnchant>(), "9c924e");
+            AddToggleTags(new CultureLocalizationInfo(english: "Gold Lucky Coin"), "GoldConfig", ModContent.ItemType<GoldEnchant>(), "e7b21c");
+            AddToggleTags(new CultureLocalizationInfo(english: "Huntress Ability"), "HuntressConfig", ModContent.ItemType<HuntressEnchant>(), "7ac04c");
+            AddToggleTags(new CultureLocalizationInfo(english: "Squire/Valhalla Effect"), "ValhallaConfig", ModContent.ItemType<ValhallaKnightEnchant>(), "93651e");
+            AddToggleTags(new CultureLocalizationInfo(english: "Ballista Panic On Hit"), "SquirePanicConfig", ModContent.ItemType<SquireEnchant>(), "948f8c");
 
-            ModifyToggleTranslation("NatureHeader", ModContent.ItemType<NatureForce>());
-            ModifyToggleTranslation("ChlorophyteConfig", ModContent.ItemType<ChlorophyteEnchant>(), "248900");
-            ModifyToggleTranslation("ChlorophyteFlowerConfig", ModContent.ItemType<ChlorophyteEnchant>(), "248900");
-            ModifyToggleTranslation("CrimsonConfig", ModContent.ItemType<CrimsonEnchant>(), "C8364B");
-            ModifyToggleTranslation("RainConfig", ModContent.ItemType<RainEnchant>(), "ffec00");
-            ModifyToggleTranslation("FrostConfig", ModContent.ItemType<FrostEnchant>(), "7abdb9");
-            ModifyToggleTranslation("SnowConfig", ModContent.ItemType<SnowEnchant>(), "25c3f2");
-            ModifyToggleTranslation("JungleConfig", ModContent.ItemType<JungleEnchant>(), "71971f");
-            ModifyToggleTranslation("CordageConfig", ModContent.ItemType<JungleEnchant>(), "71971f");
-            ModifyToggleTranslation("MoltenConfig", ModContent.ItemType<MoltenEnchant>(), "c12b2b");
-            ModifyToggleTranslation("MoltenEConfig", ModContent.ItemType<MoltenEnchant>(), "c12b2b");
-            ModifyToggleTranslation("ShroomiteConfig", ModContent.ItemType<ShroomiteEnchant>(), "008cf4");
-            ModifyToggleTranslation("ShroomiteShroomConfig", ModContent.ItemType<ShroomiteEnchant>(), "008cf4");
+            AddToggleTags(new CultureLocalizationInfo(english: "Force of Life"), "LifeHeader", ModContent.ItemType<LifeForce>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Bees"), "BeeConfig", ModContent.ItemType<BeeEnchant>(), "FEF625");
+            AddToggleTags(new CultureLocalizationInfo(english: "Beetles"), "BeetleConfig", ModContent.ItemType<BeetleEnchant>(), "6D5C85");
+            AddToggleTags(new CultureLocalizationInfo(english: "Cactus Needles"), "CactusConfig", ModContent.ItemType<CactusEnchant>(), "799e1d");
+            AddToggleTags(new CultureLocalizationInfo(english: "Grow Pumpkins"), "PumpkinConfig", ModContent.ItemType<PumpkinEnchant>(), "e3651c");
+            AddToggleTags(new CultureLocalizationInfo(english: "Spider Swarm"), "SpiderConfig", ModContent.ItemType<SpiderEnchant>(), "6d4e45");
+            AddToggleTags(new CultureLocalizationInfo(english: "Turtle Shell Buff"), "TurtleConfig", ModContent.ItemType<TurtleEnchant>(), "f89c5c");
 
-            ModifyToggleTranslation("ShadowHeader", ModContent.ItemType<ShadowForce>());
-            ModifyToggleTranslation("DarkArtConfig", ModContent.ItemType<DarkArtistEnchant>(), "9b5cb0");
-            ModifyToggleTranslation("ApprenticeConfig", ModContent.ItemType<ApprenticeEnchant>(), "5d86a6");
-            ModifyToggleTranslation("NecroConfig", ModContent.ItemType<NecroEnchant>(), "565643");
-            ModifyToggleTranslation("ShadowConfig", ModContent.ItemType<ShadowEnchant>(), "42356f");
-            ModifyToggleTranslation("AncientShadowConfig", ModContent.ItemType<AncientShadowEnchant>(), "42356f");
-            ModifyToggleTranslation("MonkConfig", ModContent.ItemType<MonkEnchant>(), "920520");
-            ModifyToggleTranslation("ShinobiConfig", ModContent.ItemType<ShinobiEnchant>(), "935b18");
-            ModifyToggleTranslation("ShinobiTabiConfig", ModContent.ItemType<ShinobiEnchant>(), "935b18");
-            ModifyToggleTranslation("ShinobiClimbingConfig", ModContent.ItemType<ShinobiEnchant>(), "935b18");
-            ModifyToggleTranslation("SpookyConfig", ModContent.ItemType<SpookyEnchant>(), "644e74");
+            AddToggleTags(new CultureLocalizationInfo(english: "Force of Nature"), "NatureHeader", ModContent.ItemType<NatureForce>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Chlorophyte Leaf Crystal"), "ChlorophyteConfig", ModContent.ItemType<ChlorophyteEnchant>(), "248900");
+            AddToggleTags(new CultureLocalizationInfo(english: "Flower Boots"), "ChlorophyteFlowerConfig", ModContent.ItemType<ChlorophyteEnchant>(), "248900");
+            AddToggleTags(new CultureLocalizationInfo(english: "Crimson Regen"), "CrimsonConfig", ModContent.ItemType<CrimsonEnchant>(), "C8364B");
+            AddToggleTags(new CultureLocalizationInfo(english: "Rain Clouds"), "RainConfig", ModContent.ItemType<RainEnchant>(), "ffec00");
+            AddToggleTags(new CultureLocalizationInfo(english: "Frost Icicles"), "FrostConfig", ModContent.ItemType<FrostEnchant>(), "7abdb9");
+            AddToggleTags(new CultureLocalizationInfo(english: "Snowstorm"), "SnowConfig", ModContent.ItemType<SnowEnchant>(), "25c3f2");
+            AddToggleTags(new CultureLocalizationInfo(english: "Jungle Spores"), "JungleConfig", ModContent.ItemType<JungleEnchant>(), "71971f");
+            AddToggleTags(new CultureLocalizationInfo(english: "Plant Fiber Cordage"), "CordageConfig", ModContent.ItemType<JungleEnchant>(), "71971f");
+            AddToggleTags(new CultureLocalizationInfo(english: "Molten Inferno Buff"), "MoltenConfig", ModContent.ItemType<MoltenEnchant>(), "c12b2b");
+            AddToggleTags(new CultureLocalizationInfo(english: "Molten Explosion On Hit"), "MoltenEConfig", ModContent.ItemType<MoltenEnchant>(), "c12b2b");
+            AddToggleTags(new CultureLocalizationInfo(english: "Shroomite Stealth"), "ShroomiteConfig", ModContent.ItemType<ShroomiteEnchant>(), "008cf4");
+            AddToggleTags(new CultureLocalizationInfo(english: "Shroomite Mushrooms"), "ShroomiteShroomConfig", ModContent.ItemType<ShroomiteEnchant>(), "008cf4");
 
-            ModifyToggleTranslation("SpiritHeader", ModContent.ItemType<SpiritForce>());
-            ModifyToggleTranslation("ForbiddenConfig", ModContent.ItemType<ForbiddenEnchant>(), "e7b21c");
-            ModifyToggleTranslation("HallowedConfig", ModContent.ItemType<HallowEnchant>(), "968564");
-            ModifyToggleTranslation("HallowSConfig", ModContent.ItemType<HallowEnchant>(), "968564");
-            ModifyToggleTranslation("SilverConfig", ModContent.ItemType<SilverEnchant>(), "b4b4cc");
-            ModifyToggleTranslation("SpectreConfig", ModContent.ItemType<SpectreEnchant>(), "accdfc");
-            ModifyToggleTranslation("TikiConfig", ModContent.ItemType<TikiEnchant>(), "56A52B");
+            AddToggleTags(new CultureLocalizationInfo(english: "Shadow Force"), "ShadowHeader", ModContent.ItemType<ShadowForce>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Flameburst Minion"), "DarkArtConfig", ModContent.ItemType<DarkArtistEnchant>(), "9b5cb0");
+            AddToggleTags(new CultureLocalizationInfo(english: "Apprentice Effect"), "ApprenticeConfig", ModContent.ItemType<ApprenticeEnchant>(), "5d86a6");
+            AddToggleTags(new CultureLocalizationInfo(english: "Necro Graves"), "NecroConfig", ModContent.ItemType<NecroEnchant>(), "565643");
+            AddToggleTags(new CultureLocalizationInfo(english: "Shadow Darkness"), "ShadowConfig", ModContent.ItemType<ShadowEnchant>(), "42356f");
+            AddToggleTags(new CultureLocalizationInfo(english: "Ancient Shadow Orbs"), "AncientShadowConfig", ModContent.ItemType<AncientShadowEnchant>(), "42356f");
+            AddToggleTags(new CultureLocalizationInfo(english: "Monk Dash"), "MonkConfig", ModContent.ItemType<MonkEnchant>(), "920520");
+            AddToggleTags(new CultureLocalizationInfo(english: "Shinobi Through Walls"), "ShinobiConfig", ModContent.ItemType<ShinobiEnchant>(), "935b18");
+            AddToggleTags(new CultureLocalizationInfo(english: "Tabi Dash"), "ShinobiTabiConfig", ModContent.ItemType<ShinobiEnchant>(), "935b18");
+            AddToggleTags(new CultureLocalizationInfo(english: "Tiger Climbing Gear"), "ShinobiClimbingConfig", ModContent.ItemType<ShinobiEnchant>(), "935b18");
+            AddToggleTags(new CultureLocalizationInfo(english: "Spooky Scythes"), "SpookyConfig", ModContent.ItemType<SpookyEnchant>(), "644e74");
 
-            ModifyToggleTranslation("CosmoHeader", ModContent.ItemType<CosmoForce>());
-            ModifyToggleTranslation("MeteorConfig", ModContent.ItemType<MeteorEnchant>(), "5f4752");
-            ModifyToggleTranslation("NebulaConfig", ModContent.ItemType<NebulaEnchant>(), "fe7ee5");
-            ModifyToggleTranslation("SolarConfig", ModContent.ItemType<SolarEnchant>(), "fe9e23");
-            ModifyToggleTranslation("SolarFlareConfig", ModContent.ItemType<SolarEnchant>(), "fe9e23");
-            ModifyToggleTranslation("StardustConfig", ModContent.ItemType<StardustEnchant>(), "00aeee");
-            ModifyToggleTranslation("VortexSConfig", ModContent.ItemType<VortexEnchant>(), "00f2aa");
-            ModifyToggleTranslation("VortexVConfig", ModContent.ItemType<VortexEnchant>(), "00f2aa");
+            AddToggleTags(new CultureLocalizationInfo(english: "Force of Spirit"), "SpiritHeader", ModContent.ItemType<SpiritForce>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Forbidden Storm"), "ForbiddenConfig", ModContent.ItemType<ForbiddenEnchant>(), "e7b21c");
+            AddToggleTags(new CultureLocalizationInfo(english: "Hallowed Enchanted Sword Familiar"), "HallowedConfig", ModContent.ItemType<HallowEnchant>(), "968564");
+            AddToggleTags(new CultureLocalizationInfo(english: "Hallowed Shield"), "HallowSConfig", ModContent.ItemType<HallowEnchant>(), "968564");
+            AddToggleTags(new CultureLocalizationInfo(english: "Silver Sword Familiar"), "SilverConfig", ModContent.ItemType<SilverEnchant>(), "b4b4cc");
+            AddToggleTags(new CultureLocalizationInfo(english: "Spectre Orbs"), "SpectreConfig", ModContent.ItemType<SpectreEnchant>(), "accdfc");
+            AddToggleTags(new CultureLocalizationInfo(english: "Tiki Minions"), "TikiConfig", ModContent.ItemType<TikiEnchant>(), "56A52B");
+
+            AddToggleTags(new CultureLocalizationInfo(english: "Force of Cosmos"), "CosmoHeader", ModContent.ItemType<CosmoForce>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Meteor Shower"), "MeteorConfig", ModContent.ItemType<MeteorEnchant>(), "5f4752");
+            AddToggleTags(new CultureLocalizationInfo(english: "Nebula Boosters"), "NebulaConfig", ModContent.ItemType<NebulaEnchant>(), "fe7ee5");
+            AddToggleTags(new CultureLocalizationInfo(english: "Solar Shield"), "SolarConfig", ModContent.ItemType<SolarEnchant>(), "fe9e23");
+            AddToggleTags(new CultureLocalizationInfo(english: "Inflict Solar Flare"), "SolarFlareConfig", ModContent.ItemType<SolarEnchant>(), "fe9e23");
+            AddToggleTags(new CultureLocalizationInfo(english: "Stardust Guardian"), "StardustConfig", ModContent.ItemType<StardustEnchant>(), "00aeee");
+            AddToggleTags(new CultureLocalizationInfo(english: "Vortex Stealth"), "VortexSConfig", ModContent.ItemType<VortexEnchant>(), "00f2aa");
+            AddToggleTags(new CultureLocalizationInfo(english: "Vortex Voids"), "VortexVConfig", ModContent.ItemType<VortexEnchant>(), "00f2aa");
 
             #endregion enchants
 
             #region masomode toggles
 
             //Masomode Header
-            ModifyToggleTranslation("MasoHeader", ModContent.ItemType<MutantStatue>());
-            //ModifyToggleTranslation("MasoBossBG", ModContent.ItemType<Masochist>());
-            ModifyToggleTranslation("MasoBossRecolors", ModContent.ItemType<Masochist>());
-            ModifyToggleTranslation("MasoIconConfig", ModContent.ItemType<SinisterIcon>());
-            ModifyToggleTranslation("MasoIconDropsConfig", ModContent.ItemType<SinisterIcon>());
-            ModifyToggleTranslation("MasoGrazeConfig", ModContent.ItemType<SparklingAdoration>());
-            ModifyToggleTranslation("MasoDevianttHeartsConfig", ModContent.ItemType<SparklingAdoration>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Eternity Mode"), "MasoHeader", ModContent.ItemType<MutantStatue>());
+            //AddToggleTags(new CultureLocalizationInfo(english: "Mutant Bright Background"), "MasoBossBG", ModContent.ItemType<Masochist>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Boss Recolors (Restart to use)"), "MasoBossRecolors", ModContent.ItemType<Masochist>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Sinister Icon"), "MasoIconConfig", ModContent.ItemType<SinisterIcon>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Sinister Icon Drops"), "MasoIconDropsConfig", ModContent.ItemType<SinisterIcon>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Graze"), "MasoGrazeConfig", ModContent.ItemType<SparklingAdoration>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Attacks Spawn Homing Hearts"), "MasoDevianttHeartsConfig", ModContent.ItemType<SparklingAdoration>());
 
             //supreme death fairy header
-            ModifyToggleTranslation("SupremeFairyHeader", ModContent.ItemType<SupremeDeathbringerFairy>());
-            ModifyToggleTranslation("MasoSlimeConfig", ModContent.ItemType<SlimyShield>());
-            ModifyToggleTranslation("SlimeFallingConfig", ModContent.ItemType<SlimyShield>());
-            ModifyToggleTranslation("MasoEyeConfig", ModContent.ItemType<AgitatingLens>());
-            ModifyToggleTranslation("MasoHoneyConfig", ModContent.ItemType<QueenStinger>());
-            ModifyToggleTranslation("MasoSkeleConfig", ModContent.ItemType<NecromanticBrew>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Supreme Deathbringer Fairy"), "SupremeFairyHeader", ModContent.ItemType<SupremeDeathbringerFairy>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Slimy Balls"), "MasoSlimeConfig", ModContent.ItemType<SlimyShield>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Increased Fall Speed"), "SlimeFallingConfig", ModContent.ItemType<SlimyShield>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Scythes When Dashing"), "MasoEyeConfig", ModContent.ItemType<AgitatingLens>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Honey When Hitting Enemies"), "MasoHoneyConfig", ModContent.ItemType<QueenStinger>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Skeletron Arms Minion"), "MasoSkeleConfig", ModContent.ItemType<NecromanticBrew>());
 
             //bionomic
-            ModifyToggleTranslation("BionomicHeader", ModContent.ItemType<BionomicCluster>());
-            ModifyToggleTranslation("MasoConcoctionConfig", ModContent.ItemType<TimsConcoction>());
-            ModifyToggleTranslation("MasoCarrotConfig", ModContent.ItemType<OrdinaryCarrot>());
-            ModifyToggleTranslation("MasoRainbowConfig", ModContent.ItemType<ConcentratedRainbowMatter>());
-            ModifyToggleTranslation("MasoFrigidConfig", ModContent.ItemType<FrigidGemstone>());
-            ModifyToggleTranslation("MasoNymphConfig", ModContent.ItemType<NymphsPerfume>());
-            ModifyToggleTranslation("MasoSqueakConfig", ModContent.ItemType<SqueakyToy>());
-            ModifyToggleTranslation("MasoPouchConfig", ModContent.ItemType<WretchedPouch>());
-            ModifyToggleTranslation("MasoClippedConfig", ModContent.ItemType<WyvernFeather>());
-            ModifyToggleTranslation("TribalCharmConfig", ModContent.ItemType<TribalCharm>());
-            //ModifyToggleTranslation("WalletHeader", ModContent.ItemType<SecurityWallet>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Bionomic Cluster"), "BionomicHeader", ModContent.ItemType<BionomicCluster>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Tim's Concoction"), "MasoConcoctionConfig", ModContent.ItemType<TimsConcoction>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Carrot View"), "MasoCarrotConfig", ModContent.ItemType<OrdinaryCarrot>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Rainbow Slime Minion"), "MasoRainbowConfig", ModContent.ItemType<ConcentratedRainbowMatter>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Frostfireballs"), "MasoFrigidConfig", ModContent.ItemType<FrigidGemstone>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Attacks Spawn Hearts"), "MasoNymphConfig", ModContent.ItemType<NymphsPerfume>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Squeaky Toy On Hit"), "MasoSqueakConfig", ModContent.ItemType<SqueakyToy>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Tentacles On Hit"), "MasoPouchConfig", ModContent.ItemType<WretchedPouch>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Inflict Clipped Wings"), "MasoClippedConfig", ModContent.ItemType<WyvernFeather>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Tribal Charm Auto Swing"), "TribalCharmConfig", ModContent.ItemType<TribalCharm>());
+            //AddToggleTags(new CultureLocalizationInfo(english: "Security Wallet"), "WalletHeader", ModContent.ItemType<SecurityWallet>());
 
             //dubious
-            ModifyToggleTranslation("DubiousHeader", ModContent.ItemType<DubiousCircuitry>());
-            ModifyToggleTranslation("MasoLightningConfig", ModContent.ItemType<GroundStick>());
-            ModifyToggleTranslation("MasoProbeConfig", ModContent.ItemType<GroundStick>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Dubious Circuitry"), "DubiousHeader", ModContent.ItemType<DubiousCircuitry>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Inflict Lightning Rod"), "MasoLightningConfig", ModContent.ItemType<GroundStick>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Probes Minion"), "MasoProbeConfig", ModContent.ItemType<GroundStick>());
 
             //pure heart
-            ModifyToggleTranslation("PureHeartHeader", ModContent.ItemType<PureHeart>());
-            ModifyToggleTranslation("MasoEaterConfig", ModContent.ItemType<CorruptHeart>());
-            ModifyToggleTranslation("MasoBrainConfig", ModContent.ItemType<GuttedHeart>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Pure Heart"), "PureHeartHeader", ModContent.ItemType<PureHeart>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Tiny Eaters"), "MasoEaterConfig", ModContent.ItemType<CorruptHeart>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Creeper Shield"), "MasoBrainConfig", ModContent.ItemType<GuttedHeart>());
 
             //lump of flesh
-            ModifyToggleTranslation("LumpofFleshHeader", ModContent.ItemType<LumpOfFlesh>());
-            ModifyToggleTranslation("MasoPugentConfig", ModContent.ItemType<LumpOfFlesh>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Lump of Flesh"), "LumpofFleshHeader", ModContent.ItemType<LumpOfFlesh>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Pungent Eye Minion"), "MasoPugentConfig", ModContent.ItemType<LumpOfFlesh>());
 
             //chalice
-            ModifyToggleTranslation("ChaliceHeader", ModContent.ItemType<ChaliceoftheMoon>());
-            ModifyToggleTranslation("MasoCultistConfig", ModContent.ItemType<ChaliceoftheMoon>());
-            ModifyToggleTranslation("MasoPlantConfig", ModContent.ItemType<MagicalBulb>());
-            ModifyToggleTranslation("MasoGolemConfig", ModContent.ItemType<LihzahrdTreasureBox>());
-            ModifyToggleTranslation("MasoBoulderConfig", ModContent.ItemType<LihzahrdTreasureBox>());
-            ModifyToggleTranslation("MasoCelestConfig", ModContent.ItemType<CelestialRune>());
-            ModifyToggleTranslation("MasoVisionConfig", ModContent.ItemType<CelestialRune>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Chalice of the Moon"), "ChaliceHeader", ModContent.ItemType<ChaliceoftheMoon>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Cultist Minion"), "MasoCultistConfig", ModContent.ItemType<ChaliceoftheMoon>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Plantera Minion"), "MasoPlantConfig", ModContent.ItemType<MagicalBulb>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Lihzahrd Ground Pound"), "MasoGolemConfig", ModContent.ItemType<LihzahrdTreasureBox>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Boulder Spray"), "MasoBoulderConfig", ModContent.ItemType<LihzahrdTreasureBox>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Celestial Rune Support"), "MasoCelestConfig", ModContent.ItemType<CelestialRune>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Ancient Visions On Hit"), "MasoVisionConfig", ModContent.ItemType<CelestialRune>());
 
             //heart of the masochist
-            ModifyToggleTranslation("HeartHeader", ModContent.ItemType<HeartoftheMasochist>());
-            ModifyToggleTranslation("MasoPump", ModContent.ItemType<PumpkingsCape>());
-            ModifyToggleTranslation("MasoFlockoConfig", ModContent.ItemType<IceQueensCrown>());
-            ModifyToggleTranslation("MasoUfoConfig", ModContent.ItemType<SaucerControlConsole>());
-            ModifyToggleTranslation("MasoGravConfig", ModContent.ItemType<GalacticGlobe>());
-            ModifyToggleTranslation("MasoGrav2Config", ModContent.ItemType<GalacticGlobe>());
-            ModifyToggleTranslation("MasoTrueEyeConfig", ModContent.ItemType<GalacticGlobe>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Heart of the Eternal"), "HeartHeader", ModContent.ItemType<HeartoftheMasochist>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Pumpking's Cape Support"), "MasoPump", ModContent.ItemType<PumpkingsCape>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Flocko Minion"), "MasoFlockoConfig", ModContent.ItemType<IceQueensCrown>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Saucer Minion"), "MasoUfoConfig", ModContent.ItemType<SaucerControlConsole>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Gravity Control"), "MasoGravConfig", ModContent.ItemType<GalacticGlobe>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Stabilized Gravity"), "MasoGrav2Config", ModContent.ItemType<GalacticGlobe>());
+            AddToggleTags(new CultureLocalizationInfo(english: "True Eyes Minion"), "MasoTrueEyeConfig", ModContent.ItemType<GalacticGlobe>());
 
             //cyclonic fin
-            ModifyToggleTranslation("CyclonicHeader", ModContent.ItemType<CyclonicFin>());
-            ModifyToggleTranslation("MasoFishronConfig", ModContent.ItemType<CyclonicFin>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Abominable Wand"), "CyclonicHeader", ModContent.ItemType<CyclonicFin>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Spectral Abominationn"), "MasoFishronConfig", ModContent.ItemType<CyclonicFin>());
 
             //mutant armor
-            ModifyToggleTranslation("MutantArmorHeader", ModContent.ItemType<HeartoftheMasochist>());
-            ModifyToggleTranslation("MasoAbomConfig", ModContent.ItemType<MutantMask>());
-            ModifyToggleTranslation("MasoRingConfig", ModContent.ItemType<MutantMask>());
-            ModifyToggleTranslation("MasoReviveDeathrayConfig", ModContent.ItemType<MutantMask>());
+            AddToggleTags(new CultureLocalizationInfo(english: "True Mutant Armor"), "MutantArmorHeader", ModContent.ItemType<HeartoftheMasochist>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Abominationn Minion"), "MasoAbomConfig", ModContent.ItemType<MutantMask>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Phantasmal Ring Minion"), "MasoRingConfig", ModContent.ItemType<MutantMask>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Deathray When Revived"), "MasoReviveDeathrayConfig", ModContent.ItemType<MutantMask>());
 
             #endregion masomode toggles
 
             #region soul toggles
 
-            ModifyToggleTranslation("SoulHeader", ModContent.ItemType<UniverseSoul>());
-            ModifyToggleTranslation("MeleeConfig", ModContent.ItemType<GladiatorsSoul>());
-            ModifyToggleTranslation("MagmaStoneConfig", ModContent.ItemType<GladiatorsSoul>());
-            ModifyToggleTranslation("YoyoBagConfig", ModContent.ItemType<GladiatorsSoul>());
-            ModifyToggleTranslation("SniperConfig", ModContent.ItemType<SnipersSoul>());
-            ModifyToggleTranslation("UniverseConfig", ModContent.ItemType<UniverseSoul>());
-            ModifyToggleTranslation("MiningHuntConfig", ModContent.ItemType<MinerEnchant>());
-            ModifyToggleTranslation("MiningDangerConfig", ModContent.ItemType<MinerEnchant>());
-            ModifyToggleTranslation("MiningSpelunkConfig", ModContent.ItemType<MinerEnchant>());
-            ModifyToggleTranslation("MiningShineConfig", ModContent.ItemType<MinerEnchant>());
-            ModifyToggleTranslation("BuilderConfig", ModContent.ItemType<WorldShaperSoul>());
-            ModifyToggleTranslation("DefenseSporeConfig", ModContent.ItemType<ColossusSoul>());
-            ModifyToggleTranslation("DefenseStarConfig", ModContent.ItemType<ColossusSoul>());
-            ModifyToggleTranslation("DefenseBeeConfig", ModContent.ItemType<ColossusSoul>());
-            ModifyToggleTranslation("DefensePanicConfig", ModContent.ItemType<ColossusSoul>());
-            ModifyToggleTranslation("RunSpeedConfig", ModContent.ItemType<SupersonicSoul>());
-            ModifyToggleTranslation("MomentumConfig", ModContent.ItemType<SupersonicSoul>());
-            ModifyToggleTranslation("SupersonicConfig", ModContent.ItemType<SupersonicSoul>());
-            ModifyToggleTranslation("SupersonicJumpsConfig", ModContent.ItemType<SupersonicSoul>());
-            ModifyToggleTranslation("SupersonicRocketBootsConfig", ModContent.ItemType<SupersonicSoul>());
-            ModifyToggleTranslation("SupersonicCarpetConfig", ModContent.ItemType<SupersonicSoul>());
-            ModifyToggleTranslation("TrawlerConfig", ModContent.ItemType<TrawlerSoul>());
-            ModifyToggleTranslation("EternityConfig", ModContent.ItemType<EternitySoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Souls"), "SoulHeader", ModContent.ItemType<UniverseSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Melee Speed"), "MeleeConfig", ModContent.ItemType<GladiatorsSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Magma Stone"), "MagmaStoneConfig", ModContent.ItemType<GladiatorsSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Yoyo Bag"), "YoyoBagConfig", ModContent.ItemType<GladiatorsSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Sniper Scope"), "SniperConfig", ModContent.ItemType<SnipersSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Universe Attack Speed"), "UniverseConfig", ModContent.ItemType<UniverseSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Mining Hunter Buff"), "MiningHuntConfig", ModContent.ItemType<MinerEnchant>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Mining Dangersense Buff"), "MiningDangerConfig", ModContent.ItemType<MinerEnchant>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Mining Spelunker Buff"), "MiningSpelunkConfig", ModContent.ItemType<MinerEnchant>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Mining Shine Buff"), "MiningShineConfig", ModContent.ItemType<MinerEnchant>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Builder Mode"), "BuilderConfig", ModContent.ItemType<WorldShaperSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Spore Sac"), "DefenseSporeConfig", ModContent.ItemType<ColossusSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Stars On Hit"), "DefenseStarConfig", ModContent.ItemType<ColossusSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Bees On Hit"), "DefenseBeeConfig", ModContent.ItemType<ColossusSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Panic On Hit"), "DefensePanicConfig", ModContent.ItemType<ColossusSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Higher Base Run Speed"), "RunSpeedConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "No Momentum"), "MomentumConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Supersonic Speed Boosts"), "SupersonicConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Supersonic Jumps"), "SupersonicJumpsConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Supersonic Rocket Boots"), "SupersonicRocketBootsConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Supersonic Carpet"), "SupersonicCarpetConfig", ModContent.ItemType<SupersonicSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Trawler Extra Lures"), "TrawlerConfig", ModContent.ItemType<TrawlerSoul>());
+            AddToggleTags(new CultureLocalizationInfo(english: "Eternity Stacking"), "EternityConfig", ModContent.ItemType<EternitySoul>());
 
             #endregion soul toggles
 
             #region pet toggles
 
-            ModifyToggleTranslation("PetHeader", 2420);
-            ModifyToggleTranslation("PetCatConfig", 1810);
-            ModifyToggleTranslation("PetCubeConfig", 3628);
-            ModifyToggleTranslation("PetCurseSapConfig", 1837);
-            ModifyToggleTranslation("PetDinoConfig", 1242);
-            ModifyToggleTranslation("PetDragonConfig", 3857);
-            ModifyToggleTranslation("PetEaterConfig", 994);
-            ModifyToggleTranslation("PetEyeSpringConfig", 1311);
-            ModifyToggleTranslation("PetFaceMonsterConfig", 3060);
-            ModifyToggleTranslation("PetGatoConfig", 3855);
-            ModifyToggleTranslation("PetHornetConfig", 1170);
-            ModifyToggleTranslation("PetLizardConfig", 1172);
-            ModifyToggleTranslation("PetMinitaurConfig", 2587);
-            ModifyToggleTranslation("PetParrotConfig", 1180);
-            ModifyToggleTranslation("PetPenguinConfig", 669);
-            ModifyToggleTranslation("PetPupConfig", 1927);
-            ModifyToggleTranslation("PetSeedConfig", 1182);
-            ModifyToggleTranslation("PetDGConfig", 1169);
-            ModifyToggleTranslation("PetSnowmanConfig", 1312);
-            ModifyToggleTranslation("PetGrinchConfig", ItemID.BabyGrinchMischiefWhistle);
-            ModifyToggleTranslation("PetSpiderConfig", 1798);
-            ModifyToggleTranslation("PetSquashConfig", 1799);
-            ModifyToggleTranslation("PetTikiConfig", 1171);
-            ModifyToggleTranslation("PetShroomConfig", 1181);
-            ModifyToggleTranslation("PetTurtleConfig", 753);
-            ModifyToggleTranslation("PetZephyrConfig", 2420);
-            ModifyToggleTranslation("PetHeartConfig", 3062);
-            ModifyToggleTranslation("PetNaviConfig", 425);
-            ModifyToggleTranslation("PetFlickerConfig", 3856);
-            ModifyToggleTranslation("PetLanturnConfig", 3043);
-            ModifyToggleTranslation("PetOrbConfig", 115);
-            ModifyToggleTranslation("PetSuspEyeConfig", 3577);
-            ModifyToggleTranslation("PetWispConfig", 1183);
+            AddToggleTags(new CultureLocalizationInfo(english: "Pets"), "PetHeader", 2420);
+            AddToggleTags(new CultureLocalizationInfo(english: "Black Cat Pet"), "PetCatConfig", 1810);
+            AddToggleTags(new CultureLocalizationInfo(english: "Companion Cube Pet"), "PetCubeConfig", 3628);
+            AddToggleTags(new CultureLocalizationInfo(english: "Cursed Sapling Pet"), "PetCurseSapConfig", 1837);
+            AddToggleTags(new CultureLocalizationInfo(english: "Dino Pet"), "PetDinoConfig", 1242);
+            AddToggleTags(new CultureLocalizationInfo(english: "Dragon Pet"), "PetDragonConfig", 3857);
+            AddToggleTags(new CultureLocalizationInfo(english: "Eater Pet"), "PetEaterConfig", 994);
+            AddToggleTags(new CultureLocalizationInfo(english: "Eye Spring Pet"), "PetEyeSpringConfig", 1311);
+            AddToggleTags(new CultureLocalizationInfo(english: "Face Monster Pet"), "PetFaceMonsterConfig", 3060);
+            AddToggleTags(new CultureLocalizationInfo(english: "Gato Pet"), "PetGatoConfig", 3855);
+            AddToggleTags(new CultureLocalizationInfo(english: "Hornet Pet"), "PetHornetConfig", 1170);
+            AddToggleTags(new CultureLocalizationInfo(english: "Lizard Pet"), "PetLizardConfig", 1172);
+            AddToggleTags(new CultureLocalizationInfo(english: "Mini Minotaur Pet"), "PetMinitaurConfig", 2587);
+            AddToggleTags(new CultureLocalizationInfo(english: "Parrot Pet"), "PetParrotConfig", 1180);
+            AddToggleTags(new CultureLocalizationInfo(english: "Penguin Pet"), "PetPenguinConfig", 669);
+            AddToggleTags(new CultureLocalizationInfo(english: "Puppy Pet"), "PetPupConfig", 1927);
+            AddToggleTags(new CultureLocalizationInfo(english: "Seedling Pet"), "PetSeedConfig", 1182);
+            AddToggleTags(new CultureLocalizationInfo(english: "Skeletron Pet"), "PetDGConfig", 1169);
+            AddToggleTags(new CultureLocalizationInfo(english: "Snowman Pet"), "PetSnowmanConfig", 1312);
+            AddToggleTags(new CultureLocalizationInfo(english: "Grinch Pet"), "PetGrinchConfig", ItemID.BabyGrinchMischiefWhistle);
+            AddToggleTags(new CultureLocalizationInfo(english: "Spider Pet"), "PetSpiderConfig", 1798);
+            AddToggleTags(new CultureLocalizationInfo(english: "Squashling Pet"), "PetSquashConfig", 1799);
+            AddToggleTags(new CultureLocalizationInfo(english: "Tiki Pet"), "PetTikiConfig", 1171);
+            AddToggleTags(new CultureLocalizationInfo(english: "Truffle Pet"), "PetShroomConfig", 1181);
+            AddToggleTags(new CultureLocalizationInfo(english: "Turtle Pet"), "PetTurtleConfig", 753);
+            AddToggleTags(new CultureLocalizationInfo(english: "Zephyr Fish Pet"), "PetZephyrConfig", 2420);
+            AddToggleTags(new CultureLocalizationInfo(english: "Crimson Heart Pet"), "PetHeartConfig", 3062);
+            AddToggleTags(new CultureLocalizationInfo(english: "Fairy Pet"), "PetNaviConfig", 425);
+            AddToggleTags(new CultureLocalizationInfo(english: "Flickerwick Pet"), "PetFlickerConfig", 3856);
+            AddToggleTags(new CultureLocalizationInfo(english: "Magic Lantern Pet"), "PetLanturnConfig", 3043);
+            AddToggleTags(new CultureLocalizationInfo(english: "Shadow Orb Pet"), "PetOrbConfig", 115);
+            AddToggleTags(new CultureLocalizationInfo(english: "Suspicious Eye Pet"), "PetSuspEyeConfig", 3577);
+            AddToggleTags(new CultureLocalizationInfo(english: "Wisp Pet"), "PetWispConfig", 1183);
 
             #endregion pet toggles
 
-            #region patreon toggles
-
-            ModifyToggleTranslation("PatreonHeader", ModContent.ItemType<RoombaPet>());
-            ModifyToggleTranslation("PatreonRoomba", ModContent.ItemType<RoombaPet>());
-            ModifyToggleTranslation("PatreonOrb", ModContent.ItemType<ComputationOrb>());
-            ModifyToggleTranslation("PatreonFishingRod", ModContent.ItemType<MissDrakovisFishingPole>());
-            ModifyToggleTranslation("PatreonDoor", ModContent.ItemType<SquidwardDoor>());
-            ModifyToggleTranslation("PatreonWolf", ModContent.ItemType<ParadoxWolfSoul>());
-            ModifyToggleTranslation("PatreonDove", ModContent.ItemType<FigBranch>());
-            ModifyToggleTranslation("PatreonKingSlime", ModContent.ItemType<MedallionoftheFallenKing>());
-            ModifyToggleTranslation("PatreonFishron", ModContent.ItemType<StaffOfUnleashedOcean>());
-            ModifyToggleTranslation("PatreonPlant", ModContent.ItemType<PiranhaPlantVoodooDoll>());
-
-            #endregion patreon toggles
-
             #endregion Toggles
-
-            AddConfig("SoulConfig", new SoulConfig());
 
             if (Main.netMode != NetmodeID.Server)
             {
@@ -432,11 +427,12 @@ namespace FargowiltasSouls
             }
         }
 
-        public void ModifyToggleTranslation(string toggle, int item, string color = "ffffff")
+        public void AddToggleTags(CultureLocalizationInfo localizationInfo, string toggle, int item, string color = "ffffff", Mod mod = default)
         {
-            ModTranslation newTranslation = CreateTranslation($"Toggles.{toggle}Toggle");
-            newTranslation.SetDefault($"[i:{item}] [c/{color}:{FargoLangHelper.GetToggleText(toggle)}]");
-            AddTranslation(newTranslation);
+            if (mod == default)
+                mod = Instance;
+
+            localizationInfo.PopulateModTranslation(CreateTranslation($"Toggles.{toggle}"), item, mod, color);
         }
 
         public override void Unload()
