@@ -4,29 +4,13 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using FargowiltasSouls.NPCs;
 
-namespace FargowiltasSouls.Projectiles.Champions
+namespace FargowiltasSouls.Projectiles.Masomode
 {
-    public class CosmosVortex : ModProjectile
+    public class MoonLordVortex : Champions.CosmosVortex
     {
         public override string Texture => "Terraria/Projectile_578";
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Vortex");
-        }
-
-        public override void SetDefaults()
-        {
-            projectile.width = 32;
-            projectile.height = 32;
-            projectile.hostile = true;
-            projectile.ignoreWater = true;
-            projectile.tileCollide = false;
-            projectile.alpha = 255;
-            projectile.penetrate = -1;
-            projectile.GetGlobalProjectile<FargoGlobalProjectile>().ImmuneToMutantBomb = true;
-        }
 
         public override bool CanDamage()
         {
@@ -35,18 +19,76 @@ namespace FargowiltasSouls.Projectiles.Champions
 
         public override void AI()
         {
-            const int time = 360;
+            const int time = 1200;
             const int maxScale = 3;
+            const float suckRange = 150;
 
             void Suck()
             {
-                Player player = Main.LocalPlayer;
-                if (player.active && !player.dead && !player.ghost && projectile.Center != player.Center && projectile.Distance(player.Center) < 3000)
+                for (int i = 0; i < Main.maxProjectiles; i++)
                 {
-                    float dragSpeed = projectile.Distance(player.Center) / 45;
-                    player.position += projectile.DirectionFrom(player.Center) * dragSpeed;
+                    if (Main.projectile[i].active && Main.projectile[i].friendly && Main.projectile[i].damage > 0 && !Main.projectile[i].minion && Main.projectile[i].Distance(projectile.Center) < suckRange)
+                    {
+                        //suck in nearby friendly projs
+                        Main.projectile[i].velocity = Main.projectile[i].DirectionTo(projectile.Center) * Main.projectile[i].velocity.Length();
+                        Main.projectile[i].velocity *= 1.015f;
+
+                        //kill ones that actually fall in and retaliate
+                        if (Main.netMode != NetmodeID.MultiplayerClient && projectile.Colliding(projectile.Hitbox, Main.projectile[i].Hitbox))
+                        {
+                            Player player = Main.player[Main.projectile[i].owner];
+                            if (player.active && !player.dead && !player.ghost && projectile.localAI[1] <= 0)
+                            {
+                                projectile.localAI[1] = 2;
+
+                                Vector2 dir = projectile.DirectionTo(player.Center);
+                                float ai1New = (Main.rand.Next(2) == 0) ? 1 : -1; //randomize starting direction
+                                Vector2 vel = Vector2.Normalize(dir) * 6f;
+                                Projectile.NewProjectile(projectile.Center, vel * 6, ModContent.ProjectileType<Champions.CosmosLightning>(),
+                                    projectile.damage, 0, Main.myPlayer, dir.ToRotation(), ai1New);
+                            }
+                            Main.projectile[i].Kill();
+                        }
+                    }
                 }
             };
+
+            if (projectile.localAI[1] > 0)
+                projectile.localAI[1]--;
+
+            int ai1 = (int)projectile.ai[1];
+            if (ai1 > -1 && ai1 < Main.maxNPCs && Main.npc[ai1].active && Main.npc[ai1].type == NPCID.MoonLordCore
+                && Main.npc[ai1].ai[0] != 2f && EModeGlobalNPC.masoStateML == 1)
+            {
+                projectile.localAI[0]++;
+
+                Vector2 offset;
+                offset.X = 300f * (float)Math.Sin(Math.PI * 2 / 240 * projectile.localAI[0]);
+                offset.Y = 150f * (float)Math.Sin(Math.PI * 2 / 120 * projectile.localAI[0]);
+
+                projectile.Center = Main.npc[ai1].Center + offset;
+            }
+            else
+            {
+                projectile.Kill();
+                return;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                Vector2 offset = new Vector2();
+                double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                offset.X += (float)(Math.Sin(angle) * suckRange);
+                offset.Y += (float)(Math.Cos(angle) * suckRange);
+                Dust dust = Main.dust[Dust.NewDust(
+                    projectile.Center + offset - new Vector2(4, 4), 0, 0,
+                    229, 0, 0, 100, Color.White, 1f
+                    )];
+                dust.velocity = Main.npc[ai1].velocity / 3;
+                if (Main.rand.Next(3) == 0)
+                    dust.velocity += Vector2.Normalize(offset);
+                dust.noGravity = true;
+            }
 
             projectile.ai[0]++;
             if (projectile.ai[0] <= 50)
@@ -100,15 +142,7 @@ namespace FargowiltasSouls.Projectiles.Champions
                     dust.customData = projectile.Center;
                 }
 
-                Suck();
-
-                int p = Player.FindClosest(projectile.Center, 0, 0);
-                if (p != -1)
-                {
-                    projectile.localAI[1] =
-                        projectile.Center == Main.player[p].Center ? 0 : projectile.DirectionTo(Main.player[p].Center).ToRotation();
-                    projectile.localAI[1] += (float)Math.PI * 2 / 3 / 2;
-                }
+                //Suck();
             }
             else if (projectile.ai[0] <= 90 + time)
             {
@@ -139,28 +173,6 @@ namespace FargowiltasSouls.Projectiles.Champions
                 }
 
                 Suck();
-                
-                if (++projectile.localAI[0] > 15) //shoot lightning out
-                {
-                    projectile.localAI[0] = 0;
-
-                    Main.PlaySound(SoundID.Item82, projectile.Center);
-                    
-                    if (Main.netMode != NetmodeID.MultiplayerClient)
-                    {
-                        const int max = 3;
-                        for (int i = 0; i < max; i++)
-                        {
-                            Vector2 dir = Vector2.UnitX.RotatedBy(projectile.localAI[1] + 2 * (float)Math.PI / max * i);
-                            float ai1New = (Main.rand.Next(2) == 0) ? 1 : -1; //randomize starting direction
-                            Vector2 vel = Vector2.Normalize(dir) * 6f;
-                            Projectile.NewProjectile(projectile.Center, vel * 6, ModContent.ProjectileType<CosmosLightning>(),
-                                projectile.damage, 0, Main.myPlayer, dir.ToRotation(), ai1New);
-                        }
-                    }
-
-                    projectile.localAI[1] += MathHelper.ToRadians(12) * projectile.ai[1];
-                }
             }
             else
             {
@@ -207,8 +219,6 @@ namespace FargowiltasSouls.Projectiles.Champions
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(BuffID.Electrified, 360);
-            if (FargoSoulsWorld.MasochistMode)
-                target.AddBuff(ModContent.BuffType<Buffs.Masomode.LightningRod>(), 360);
         }
 
         public override void Kill(int timeLeft)

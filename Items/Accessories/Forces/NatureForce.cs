@@ -97,7 +97,7 @@ Summons several pets
             recipe.AddIngredient(null, "ChlorophyteEnchant");
             recipe.AddIngredient(null, "ShroomiteEnchant");
 
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(ModLoader.GetMod("Fargowiltas").TileType("CrucibleCosmosSheet"));
 
             recipe.SetResult(this);
             recipe.AddRecipe();

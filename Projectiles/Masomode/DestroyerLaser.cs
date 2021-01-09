@@ -4,6 +4,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using FargowiltasSouls.NPCs;
 
 namespace FargowiltasSouls.Projectiles.Masomode
 {
@@ -45,6 +46,12 @@ namespace FargowiltasSouls.Projectiles.Masomode
                 if (projectile.alpha < 0)
                     projectile.alpha = 0;
             }
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            if (EModeGlobalNPC.BossIsAlive(ref EModeGlobalNPC.destroyBoss, NPCID.TheDestroyer))
+                target.AddBuff(BuffID.Electrified, 90);
         }
 
         public override Color? GetAlpha(Color lightColor)

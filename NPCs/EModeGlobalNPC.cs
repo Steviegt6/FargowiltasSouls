@@ -1327,7 +1327,17 @@ namespace FargowiltasSouls.NPCs
                                 {
                                     masoBool[0] = true;
                                     Counter[0] = 0;
-                                    for (int i = 0; i < Main.maxNPCs; i++)
+                                    for (int i = 0; i < Main.maxProjectiles; i++) //find ritual
+                                    {
+                                        if (Main.projectile[i].active && Main.projectile[i].type == ModContent.ProjectileType<LunarRitual>()
+                                            && Main.projectile[i].ai[1] == npc.ai[3])
+                                        {
+                                            Counter[1] = i;
+                                            break;
+                                        }
+                                    }
+                                    for (int i = 0; i < Main.maxNPCs; i++) //eye sync
+                                    {
                                         if (Main.npc[i].active && Main.npc[i].type == NPCID.MoonLordFreeEye && Main.npc[i].ai[3] == npc.ai[3] && i != npc.whoAmI)
                                         {
                                             npc.ai[0] = Main.npc[i].ai[0];
@@ -1340,6 +1350,7 @@ namespace FargowiltasSouls.NPCs
                                             npc.localAI[3] = Main.npc[i].localAI[3];
                                             break;
                                         }
+                                    }
                                     npc.netUpdate = true;
                                 }
 
@@ -1350,6 +1361,16 @@ namespace FargowiltasSouls.NPCs
                                     {
                                         npc.position -= npc.velocity;
                                         return false;
+                                    }
+                                }
+
+                                if (Counter[1] > -1 && Counter[1] < Main.maxProjectiles && Main.projectile[Counter[1]].active
+                                    && Main.projectile[Counter[1]].type == ModContent.ProjectileType<LunarRitual>() && Main.projectile[Counter[1]].ai[1] == npc.ai[3])
+                                {
+                                    int threshold = (int)Main.projectile[Counter[1]].localAI[0] - 150;
+                                    if (npc.Distance(Main.projectile[Counter[1]].Center) > threshold) //stay within ritual range
+                                    {
+                                        npc.Center = Main.projectile[Counter[1]].Center + npc.DirectionFrom(Main.projectile[Counter[1]].Center) * threshold;
                                     }
                                 }
                             }
@@ -5116,6 +5137,7 @@ namespace FargowiltasSouls.NPCs
                     case NPCID.TheDestroyer:
                     case NPCID.TheDestroyerBody:
                     case NPCID.TheDestroyerTail:
+                        target.AddBuff(BuffID.Electrified, 90);
                         target.AddBuff(ModContent.BuffType<LightningRod>(), 600);
                         break;
 
@@ -8053,6 +8075,21 @@ namespace FargowiltasSouls.NPCs
                     case NPCID.EaterofWorldsTail:
                         break;
 
+                    case NPCID.TheDestroyer:
+                        if (npc.life < npc.lifeMax / 10)
+                        {
+                            damage /= 4;
+                        }
+                        break;
+                    case NPCID.TheDestroyerBody:
+                    case NPCID.TheDestroyerTail:
+                        if (npc.realLife > -1 && npc.realLife < Main.maxNPCs && Main.npc[npc.realLife].life > 0 && npc.life > 0
+                            && Main.npc[npc.realLife].life < Main.npc[npc.realLife].lifeMax / 10)
+                        {
+                            damage /= 4;
+                        }
+                        break;
+
                     case NPCID.Golem:
                         damage = (int)(damage * 0.9);
                         break;
@@ -8108,7 +8145,7 @@ namespace FargowiltasSouls.NPCs
                         break;
 
                     case NPCID.MoonLordCore:
-                        damage = damage * 2 / 3;
+                        damage = damage / 2;
                         break;
                     case NPCID.MoonLordHead:
                         //damage = damage * 2;

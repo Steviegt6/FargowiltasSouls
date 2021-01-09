@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using FargowiltasSouls.NPCs;
 
 namespace FargowiltasSouls.Projectiles.Masomode
 {
@@ -8,7 +9,9 @@ namespace FargowiltasSouls.Projectiles.Masomode
     {
         public override string Texture => "Terraria/Projectile_454";
 
-        public LunarRitual() : base(MathHelper.Pi / 140f, 1600f, NPCID.MoonLordCore) { }
+        private const float maxSize = 1600f;
+
+        public LunarRitual() : base(MathHelper.Pi / 140f, maxSize, NPCID.MoonLordCore) { }
 
         public override void SetStaticDefaults()
         {
@@ -18,12 +21,29 @@ namespace FargowiltasSouls.Projectiles.Masomode
 
         protected override void Movement(NPC npc)
         {
-            if (projectile.Distance(npc.Center) <= 1)
-                projectile.Center = npc.Center;
-            else if (projectile.Distance(npc.Center) > threshold)
-                projectile.velocity = (npc.Center - projectile.Center) / 30;
+            Vector2 target = npc.Center;
+            if (npc.HasValidTarget) //tracks halfway between player and boss
+                target += (Main.player[npc.target].Center - npc.Center) / 2;
+
+            if (projectile.Distance(target) <= 1)
+                projectile.Center = target;
+            else if (projectile.Distance(target) > threshold)
+                projectile.velocity = (target - projectile.Center) / 30;
             else
-                projectile.velocity = projectile.DirectionTo(npc.Center);
+                projectile.velocity = projectile.DirectionTo(target);
+
+            if (!npc.dontTakeDamage && EModeGlobalNPC.masoStateML == 4) //lunar phase, shrink ritual
+            {
+                threshold -= 4;
+                if (threshold < maxSize / 2)
+                    threshold = maxSize / 2;
+            }
+            else
+            {
+                threshold += 6;
+                if (threshold > maxSize)
+                    threshold = maxSize;
+            }
         }
 
         public override void AI()

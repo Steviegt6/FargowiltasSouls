@@ -7,7 +7,7 @@ namespace FargowiltasSouls.Projectiles.Deathrays
 {
     public class PhantasmalDeathrayML : BaseDeathray
     {
-        public PhantasmalDeathrayML() : base(90, "PhantasmalDeathrayML") { }
+        public PhantasmalDeathrayML() : base(120, "PhantasmalDeathrayML") { }
 
         public override void SetStaticDefaults()
         {
@@ -22,7 +22,7 @@ namespace FargowiltasSouls.Projectiles.Deathrays
                 projectile.velocity = -Vector2.UnitY;
             }
             int ai1 = (int)projectile.ai[1];
-            if (Main.npc[ai1].active && (Main.npc[ai1].type == NPCID.MoonLordHand || Main.npc[ai1].type == NPCID.MoonLordHead))
+            if (Main.npc[ai1].active && (Main.npc[ai1].type == NPCID.MoonLordHand || Main.npc[ai1].type == NPCID.MoonLordHead || Main.npc[ai1].type == NPCID.MoonLordCore))
             {
                 projectile.Center = Main.npc[ai1].Center;
             }
@@ -41,6 +41,10 @@ namespace FargowiltasSouls.Projectiles.Deathrays
             }
             float num801 = 1f;
             projectile.localAI[0] += 1f;
+            if (projectile.localAI[0] > 20 && projectile.localAI[0] < maxTime - 20 && Main.player[projectile.owner].ownedProjectileCounts[ProjectileID.PhantasmalDeathray] > 0)
+            {
+                projectile.localAI[0] = maxTime - 20;
+            }
             if (projectile.localAI[0] >= maxTime)
             {
                 projectile.Kill();

@@ -134,3 +134,31 @@ added emode tooltip for vampire knives nerf
 dark stars inflict corresponding debuffs during prime/twins fights (actually this time)
 fixed twinkle popper twinkles not inflicting debuffs
 adjusted deviantt to have much worse aim when you're behind her
+
+reduced nano injection debuffs to 10 (was 15)
+all forces must be crafted at crucible (post ml now)
+moon lord total rework
+	arena tracks halfway between moon lord and player (used to track moon lord)
+	p2 weaknesses last 20sec (was 15sec)
+	increased p2 DR to 50% (was 33%)
+	TOTALLY NEW P2 ATTACKS
+	melee throws down exploding suns (currently moons because placeholder sprites)
+	vortex generates a proj-eating vortex that shoots back lightning
+	nebula shoots bouncy blazes
+	stardust is incomplete, should be dragons
+	no weakness pulls the arena in close
+	true eyes will never EVER go outside arena
+sparkling adoration adjusted so that it wont generate graze from any modded projs that cant hurt you yet
+
+moon lord
+	sun is a sun instead of a moon
+	sun chain explosion no longer inflicts burning (the sun itself will though)
+	stardust attack now attacks your sides, rays disappear faster if true eyes are also raying
+	much MUCH more spread for phantasmal bolts, you must dodge in between now, homing adjusted
+	reduced accel of p1 spheres slightly
+	increased fall speed of phanteyes so they dont clog up airspace as much
+	slightly more space between true eyes and arena border
+	PHASE 1 HAS THE OLD SUPPORT ATTACKS (slightly nerfed)
+destroyer's attacks all inflict brief electrified
+destroyer 10% desperation is real.
+fixed emode ammo nerf tooltip displaying on ammos that had no damage

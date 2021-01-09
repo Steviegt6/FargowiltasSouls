@@ -323,7 +323,7 @@ namespace FargowiltasSouls.Items
 
             if (FargoSoulsWorld.MasochistMode)
             {
-                if (item.ammo != AmmoID.None)
+                if (item.ammo != AmmoID.None && item.damage > 0)
                 {
                     if (item.ammo == AmmoID.Arrow || item.ammo == AmmoID.Bullet || item.ammo == AmmoID.Dart)
                         tooltips.Add(new TooltipLine(mod, "masoNerf", "[c/ff0000:Eternity Mode:] Contributes 80% less damage to weapons"));

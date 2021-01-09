@@ -77,7 +77,7 @@ Briefly become invulnerable after striking an enemy
             recipe.AddIngredient(null, "AdamantiteEnchant");
             recipe.AddIngredient(null, "TitaniumEnchant");
 
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(ModLoader.GetMod("Fargowiltas").TileType("CrucibleCosmosSheet"));
 
             recipe.SetResult(this);
             recipe.AddRecipe();

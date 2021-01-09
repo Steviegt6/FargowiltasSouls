@@ -1989,7 +1989,7 @@ namespace FargowiltasSouls
                     player.lifeRegen = 0;
 
                 player.lifeRegenTime = 0;
-                player.lifeRegen -= 12;
+                player.lifeRegen -= 10;
             }
 
             if (Shadowflame)

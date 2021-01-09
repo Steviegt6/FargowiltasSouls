@@ -94,7 +94,7 @@ Summons several pets
             recipe.AddIngredient(null, "ShinobiEnchant");
             recipe.AddIngredient(null, "DarkArtistEnchant");
 
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(ModLoader.GetMod("Fargowiltas").TileType("CrucibleCosmosSheet"));
 
             recipe.SetResult(this);
             recipe.AddRecipe();

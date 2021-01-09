@@ -105,7 +105,7 @@ Your attacks spawn explosions
             recipe.AddIngredient(null, "TungstenEnchant");
             recipe.AddIngredient(null, "ObsidianEnchant");
 
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(ModLoader.GetMod("Fargowiltas").TileType("CrucibleCosmosSheet"));
 
             recipe.SetResult(this);
             recipe.AddRecipe();

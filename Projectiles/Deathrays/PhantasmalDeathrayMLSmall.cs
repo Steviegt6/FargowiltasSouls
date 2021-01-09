@@ -1,17 +1,23 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace FargowiltasSouls.Projectiles.Deathrays
 {
     public class PhantasmalDeathrayMLSmall : BaseDeathray
     {
-        public PhantasmalDeathrayMLSmall() : base(150, "PhantasmalDeathrayML") { }
+        public PhantasmalDeathrayMLSmall() : base(120, "PhantasmalDeathrayML") { }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Phantasmal Deathray II");
+        }
+
+        public override bool CanDamage()
+        {
+            return false;
         }
 
         public override void AI()
@@ -22,10 +28,14 @@ namespace FargowiltasSouls.Projectiles.Deathrays
                 projectile.velocity = -Vector2.UnitY;
             }
             int ai1 = (int)projectile.ai[1];
-            if (Main.npc[ai1].active && (Main.npc[ai1].type == NPCID.MoonLordHand || Main.npc[ai1].type == NPCID.MoonLordHead))
+            if (Main.npc[ai1].active && (Main.npc[ai1].type == NPCID.MoonLordHand || Main.npc[ai1].type == NPCID.MoonLordHead || Main.npc[ai1].type == NPCID.MoonLordCore))
             {
                 projectile.Center = Main.npc[ai1].Center;
-                projectile.velocity = Main.npc[ai1].localAI[0].ToRotationVector2();
+                if (projectile.localAI[0] < maxTime - 30)
+                {
+                    int target = Main.npc[ai1].type == NPCID.MoonLordCore ? Main.npc[ai1].target : Main.npc[(int)Main.npc[ai1].ai[3]].target;
+                    projectile.velocity = Main.npc[ai1].DirectionTo(Main.player[target].Center).RotatedBy(projectile.ai[0]);
+                }
             }
             else
             {
@@ -44,6 +54,12 @@ namespace FargowiltasSouls.Projectiles.Deathrays
             projectile.localAI[0] += 1f;
             if (projectile.localAI[0] >= maxTime)
             {
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    Projectile.NewProjectile(projectile.Center, projectile.velocity, ModContent.ProjectileType<PhantasmalDeathrayML>(), 
+                        projectile.damage, projectile.knockBack, projectile.owner, 0, projectile.ai[1]);
+                }
+
                 projectile.Kill();
                 return;
             }

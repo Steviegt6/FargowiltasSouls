@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using FargowiltasSouls.Buffs.Masomode;
+using FargowiltasSouls.NPCs;
 
 namespace FargowiltasSouls.Projectiles.Masomode
 {
@@ -21,7 +23,8 @@ namespace FargowiltasSouls.Projectiles.Masomode
             projectile.width = 20;
             projectile.height = 20;
             projectile.aiStyle = -1;
-            projectile.timeLeft = 1200;
+            projectile.timeLeft = 1200 * 3;
+            projectile.tileCollide = false;
             projectile.hostile = true;
 
             projectile.extraUpdates = 2;
@@ -29,8 +32,9 @@ namespace FargowiltasSouls.Projectiles.Masomode
             cooldownSlot = 1;
         }
 
-        public override void AI() //vanilla code echprimebegone
+        public override void AI()
         {
+            //vanilla code echprimebegone
             float num1 = 5f;
             float num2 = 250f;
             float num3 = 6f;
@@ -217,8 +221,8 @@ namespace FargowiltasSouls.Projectiles.Masomode
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            if (FargoSoulsWorld.MasochistMode)
-                target.AddBuff(ModContent.BuffType<Buffs.Masomode.Hexed>(), 300);
+            target.AddBuff(ModContent.BuffType<Berserked>(), 300);
+            target.AddBuff(ModContent.BuffType<Lethargic>(), 300);
         }
 
         public override Color? GetAlpha(Color lightColor)

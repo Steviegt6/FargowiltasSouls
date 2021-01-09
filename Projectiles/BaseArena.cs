@@ -10,10 +10,10 @@ namespace FargowiltasSouls.Projectiles
     public abstract class BaseArena : ModProjectile
     {
         protected readonly float rotationPerTick;
-        protected readonly float threshold;
         protected readonly float npcType;
         protected readonly int dustType;
         protected readonly int increment;
+        protected float threshold;
         protected float targetPlayer;
 
         protected BaseArena(float rotationPerTick, float threshold, int npcType, int dustType = 135, int increment = 2)
@@ -145,6 +145,8 @@ namespace FargowiltasSouls.Projectiles
                 projectile.ai[0] += 2f * MathHelper.Pi;
                 projectile.netUpdate = true;
             }
+
+            projectile.localAI[0] = threshold;
         }
 
         public override void PostAI()

@@ -82,7 +82,7 @@ Summons several pets
             recipe.AddIngredient(null, "RedRidingEnchant");
             recipe.AddIngredient(null, "ValhallaKnightEnchant");
 
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(ModLoader.GetMod("Fargowiltas").TileType("CrucibleCosmosSheet"));
 
             recipe.SetResult(this);
             recipe.AddRecipe();

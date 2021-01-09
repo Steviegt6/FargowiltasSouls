@@ -442,7 +442,7 @@ namespace FargowiltasSouls.NPCs.Champions
                             }
                         }
 
-                        const int num226 = 150;
+                        /*const int num226 = 150;
                         for (int num227 = 0; num227 < num226; num227++)
                         {
                             Vector2 vector6 = Vector2.UnitX * 50f;
@@ -452,7 +452,7 @@ namespace FargowiltasSouls.NPCs.Champions
                             Main.dust[num228].scale = 3f;
                             Main.dust[num228].noGravity = true;
                             Main.dust[num228].velocity = vector7;
-                        }
+                        }*/
 
                         /*for (int index = 0; index < 50; ++index) //dust
                         {

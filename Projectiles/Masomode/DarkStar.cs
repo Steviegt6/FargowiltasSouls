@@ -68,6 +68,8 @@ namespace FargowiltasSouls.Projectiles.Masomode
         {
             if (EModeGlobalNPC.BossIsAlive(ref EModeGlobalNPC.primeBoss, NPCID.SkeletronPrime))
                 target.AddBuff(ModContent.BuffType<NanoInjection>(), 360);
+            if (EModeGlobalNPC.BossIsAlive(ref EModeGlobalNPC.destroyBoss, NPCID.TheDestroyer))
+                target.AddBuff(BuffID.Electrified, 90);
             if (EModeGlobalNPC.BossIsAlive(ref EModeGlobalNPC.retiBoss, NPCID.Retinazer))
                 target.AddBuff(BuffID.Ichor, 300);
             if (EModeGlobalNPC.BossIsAlive(ref EModeGlobalNPC.spazBoss, NPCID.Spazmatism))

@@ -84,7 +84,7 @@ Summons several pets
             recipe.AddIngredient(null, "TurtleEnchant");
             recipe.AddIngredient(null, "BeetleEnchant");
 
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(ModLoader.GetMod("Fargowiltas").TileType("CrucibleCosmosSheet"));
 
             recipe.SetResult(this);
             recipe.AddRecipe();

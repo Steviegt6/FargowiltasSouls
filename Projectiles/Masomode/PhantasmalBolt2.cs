@@ -51,9 +51,9 @@ namespace FargowiltasSouls.Projectiles.Masomode
 
             if (projectile.timeLeft % (projectile.extraUpdates + 1) == 0 && ++projectile.localAI[1] > 30) //only run once per tick
             {
-                if (projectile.localAI[1] < 90) //accelerate
+                if (projectile.localAI[1] < 120) //accelerate
                 {
-                    projectile.velocity *= 1.035f;
+                    projectile.velocity *= 1.025f;
                 }
 
                 if (projectile.localAI[1] < 120
@@ -61,8 +61,7 @@ namespace FargowiltasSouls.Projectiles.Masomode
                     && Main.npc[EModeGlobalNPC.moonBoss].HasValidTarget) //home
                 {
                     float rotation = projectile.velocity.ToRotation();
-                    Vector2 vel = Main.player[Main.npc[EModeGlobalNPC.moonBoss].target].Center
-                        + Main.player[Main.npc[EModeGlobalNPC.moonBoss].target].velocity * 10f - projectile.Center;
+                    Vector2 vel = Main.player[Main.npc[EModeGlobalNPC.moonBoss].target].Center - projectile.Center;
                     float targetAngle = vel.ToRotation();
                     projectile.velocity = new Vector2(projectile.velocity.Length(), 0f).RotatedBy(rotation.AngleLerp(targetAngle, 0.012f));
                 }

@@ -81,7 +81,7 @@ Projectiles may spawn a star when they hit something
             recipe.AddIngredient(null, "PalmWoodEnchant");
             recipe.AddIngredient(null, "PearlwoodEnchant");
 
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(ModLoader.GetMod("Fargowiltas").TileType("CrucibleCosmosSheet"));
 
             recipe.SetResult(this);
             recipe.AddRecipe();
