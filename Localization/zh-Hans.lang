@@ -1,6 +1,7 @@
-﻿# Hotkeys
-# Localizations with a '#' before them means that translations are needed
+﻿# Localizations with a '#' before them means that translations are needed
+# Toggles are located in Fargowiltas.cs
 
+# Hotkeys
 Hotkey.FreezeKey=冻结时间
 Hotkey.GoldKey=金身
 #Hotkey.SmokeBombKey=Throw Smoke Bomb

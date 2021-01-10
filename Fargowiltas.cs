@@ -151,6 +151,10 @@ namespace FargowiltasSouls
 
             #region Toggles
 
+            AddToggleTags(new CultureLocalizationInfo(english: "All Toggles On"), "AllTogglesOn", ItemID.None);
+            AddToggleTags(new CultureLocalizationInfo(english: "All Toggles Off"), "AllTogglesOff", ItemID.None);
+            AddToggleTags(new CultureLocalizationInfo(english: "Minimal Effects Only"), "MinimalEffectsOnly", ItemID.None);
+
             AddToggleTags(new CultureLocalizationInfo(english: "Preset Configurations"), "PresetHeader", ModContent.ItemType<Masochist>());
 
             #region enchants
@@ -727,111 +731,84 @@ namespace FargowiltasSouls
 
         public override void AddRecipeGroups()
         {
+            // the ctors for these guys autoload the recipegroups
             //drax
-            RecipeGroup group = new RecipeGroup(() => Lang.misc[37] + " Drax", ItemID.Drax, ItemID.PickaxeAxe);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyDrax", group);
+            new RecipeGroupInfo(Instance, "AnyDrax", true, ItemID.Drax, ItemID.PickaxeAxe);
 
             //dungeon enemies
-            group = new RecipeGroup(() => Lang.misc[37] + " Angry or Armored Bones Banner", ItemID.AngryBonesBanner, ItemID.BlueArmoredBonesBanner, ItemID.HellArmoredBonesBanner, ItemID.RustyArmoredBonesBanner);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyBonesBanner", group);
+            new RecipeGroupInfo(Instance, "AnyBonesBanner", true, ItemID.AngryBonesBanner, ItemID.BlueArmoredBonesBanner, ItemID.HellArmoredBonesBanner, ItemID.RustyArmoredBonesBanner);
 
             //cobalt
-            group = new RecipeGroup(() => Lang.misc[37] + " Cobalt Repeater", ItemID.CobaltRepeater, ItemID.PalladiumRepeater);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyCobaltRepeater", group);
+            new RecipeGroupInfo(Instance, "AnyCobaltRepeater", true, ItemID.CobaltRepeater, ItemID.PalladiumRepeater);
 
             //mythril
-            group = new RecipeGroup(() => Lang.misc[37] + " Mythril Repeater", ItemID.MythrilRepeater, ItemID.OrichalcumRepeater);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyMythrilRepeater", group);
+            new RecipeGroupInfo(Instance, "AnyMythrilRepeater", true, ItemID.MythrilRepeater, ItemID.OrichalcumRepeater);
 
             //adamantite
-            group = new RecipeGroup(() => Lang.misc[37] + " Adamantite Repeater", ItemID.AdamantiteRepeater, ItemID.TitaniumRepeater);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyAdamantiteRepeater", group);
+            new RecipeGroupInfo(Instance, "AnyAdamantiteRepeater", true, ItemID.AdamantiteRepeater, ItemID.TitaniumRepeater);
 
             //evil wood
-            group = new RecipeGroup(() => Lang.misc[37] + " Evil Wood", ItemID.Ebonwood, ItemID.Shadewood);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyEvilWood", group);
+            new RecipeGroupInfo(Instance, "AnyEvilWood", true, ItemID.Ebonwood, ItemID.Shadewood);
 
             //any adamantite
-            group = new RecipeGroup(() => Lang.misc[37] + " Adamantite Bar", ItemID.AdamantiteBar, ItemID.TitaniumBar);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyAdamantite", group);
+            new RecipeGroupInfo(Instance, "AnyAdamantite", true, ItemID.AdamantiteBar, ItemID.TitaniumBar);
 
             //shroomite head
-            group = new RecipeGroup(() => Lang.misc[37] + " Shroomite Head Piece", ItemID.ShroomiteHeadgear, ItemID.ShroomiteMask, ItemID.ShroomiteHelmet);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyShroomHead", group);
+            new RecipeGroupInfo(Instance, "AnyShroomHead", true, ItemID.ShroomiteHeadgear, ItemID.ShroomiteMask, ItemID.ShroomiteHelmet);
 
             //orichalcum head
-            group = new RecipeGroup(() => Lang.misc[37] + " Orichalcum Head Piece", ItemID.OrichalcumHeadgear, ItemID.OrichalcumMask, ItemID.OrichalcumHelmet);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyOriHead", group);
+            new RecipeGroupInfo(Instance, "AnyOriHead", true, ItemID.OrichalcumHeadgear, ItemID.OrichalcumMask, ItemID.OrichalcumHelmet);
 
             //palladium head
-            group = new RecipeGroup(() => Lang.misc[37] + " Palladium Head Piece", ItemID.PalladiumHeadgear, ItemID.PalladiumMask, ItemID.PalladiumHelmet);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyPallaHead", group);
+            new RecipeGroupInfo(Instance, "AnyPallaHead", true, ItemID.PalladiumHeadgear, ItemID.PalladiumMask, ItemID.PalladiumHelmet);
 
             //cobalt head
-            group = new RecipeGroup(() => Lang.misc[37] + " Cobalt Head Piece", ItemID.CobaltHelmet, ItemID.CobaltHat, ItemID.CobaltMask);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyCobaltHead", group);
+            new RecipeGroupInfo(Instance, "AnyCobaltHead", true, ItemID.CobaltHelmet, ItemID.CobaltHat, ItemID.CobaltMask);
 
             //mythril head
-            group = new RecipeGroup(() => Lang.misc[37] + " Mythril Head Piece", ItemID.MythrilHat, ItemID.MythrilHelmet, ItemID.MythrilHood);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyMythrilHead", group);
+            new RecipeGroupInfo(Instance, "AnyMythrilHead", true, ItemID.MythrilHat, ItemID.MythrilHelmet, ItemID.MythrilHood);
 
             //titanium head
-            group = new RecipeGroup(() => Lang.misc[37] + " Titanium Head Piece", ItemID.TitaniumHeadgear, ItemID.TitaniumMask, ItemID.TitaniumHelmet);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyTitaHead", group);
+            new RecipeGroupInfo(Instance, "AnyTitaHead", true, ItemID.TitaniumHeadgear, ItemID.TitaniumMask, ItemID.TitaniumHelmet);
 
             //hallowed head
-            group = new RecipeGroup(() => Lang.misc[37] + " Hallowed Head Piece", ItemID.HallowedMask, ItemID.HallowedHeadgear, ItemID.HallowedHelmet);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyHallowHead", group);
+            new RecipeGroupInfo(Instance, "AnyHallowHead", true, ItemID.HallowedMask, ItemID.HallowedHeadgear, ItemID.HallowedHelmet);
 
             //adamantite head
-            group = new RecipeGroup(() => Lang.misc[37] + " Adamantite Head Piece", ItemID.AdamantiteHelmet, ItemID.AdamantiteMask, ItemID.AdamantiteHeadgear);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyAdamHead", group);
+            new RecipeGroupInfo(Instance, "AnyAdamHead", true, ItemID.AdamantiteHelmet, ItemID.AdamantiteMask, ItemID.AdamantiteHeadgear);
 
             //chloro head
-            group = new RecipeGroup(() => Lang.misc[37] + " Chlorophyte Head Piece", ItemID.ChlorophyteMask, ItemID.ChlorophyteHelmet, ItemID.ChlorophyteHeadgear);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyChloroHead", group);
+            new RecipeGroupInfo(Instance, "AnyChloroHead", true, ItemID.ChlorophyteMask, ItemID.ChlorophyteHelmet, ItemID.ChlorophyteHeadgear);
 
             //spectre head
-            group = new RecipeGroup(() => Lang.misc[37] + " Spectre Head Piece", ItemID.SpectreHood, ItemID.SpectreMask);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnySpectreHead", group);
+            new RecipeGroupInfo(Instance, "AnySpectreHead", true, ItemID.SpectreHood, ItemID.SpectreMask);
 
             //beetle body
-            group = new RecipeGroup(() => Lang.misc[37] + " Beetle Body", ItemID.BeetleShell, ItemID.BeetleScaleMail);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyBeetle", group);
+            new RecipeGroupInfo(Instance, "AnyBeetle", true, ItemID.BeetleShell, ItemID.BeetleScaleMail);
 
             //phasesabers
-            group = new RecipeGroup(() => Lang.misc[37] + " Phasesaber", ItemID.RedPhasesaber, ItemID.BluePhasesaber, ItemID.GreenPhasesaber, ItemID.PurplePhasesaber, ItemID.WhitePhasesaber,
-                ItemID.YellowPhasesaber);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyPhasesaber", group);
+            new RecipeGroupInfo(Instance, "AnyPhasesaber", true, ItemID.RedPhasesaber, ItemID.BluePhasesaber, ItemID.GreenPhasesaber, ItemID.PurplePhasesaber, ItemID.WhitePhasesaber, ItemID.YellowPhasesaber);
 
             //vanilla butterflies
-            group = new RecipeGroup(() => Lang.misc[37] + " Butterfly", ItemID.JuliaButterfly, ItemID.MonarchButterfly, ItemID.PurpleEmperorButterfly,
-                ItemID.RedAdmiralButterfly, ItemID.SulphurButterfly, ItemID.TreeNymphButterfly, ItemID.UlyssesButterfly, ItemID.ZebraSwallowtailButterfly);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyButterfly", group);
+            new RecipeGroupInfo(Instance, "AnyButterfly", true, ItemID.JuliaButterfly, ItemID.MonarchButterfly, ItemID.PurpleEmperorButterfly, ItemID.RedAdmiralButterfly, ItemID.SulphurButterfly, ItemID.TreeNymphButterfly, ItemID.UlyssesButterfly, ItemID.ZebraSwallowtailButterfly);
 
             //vanilla squirrels
-            group = new RecipeGroup(() => Lang.misc[37] + " Squirrel", ItemID.Squirrel, ItemID.SquirrelRed);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnySquirrel", group);
+            new RecipeGroupInfo(Instance, "AnySquirrel", true, ItemID.Squirrel, ItemID.SquirrelRed);
 
             //vanilla squirrels
-            group = new RecipeGroup(() => Lang.misc[37] + " Common Fish", ItemID.AtlanticCod, ItemID.Bass, ItemID.Trout, ItemID.RedSnapper, ItemID.Salmon, ItemID.Tuna);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyCommonFish", group);
+            new RecipeGroupInfo(Instance, "AnyCommonFish", true, ItemID.AtlanticCod, ItemID.Bass, ItemID.Trout, ItemID.RedSnapper, ItemID.Salmon, ItemID.Tuna);
 
             //vanilla birds
-            group = new RecipeGroup(() => Lang.misc[37] + " Bird", ItemID.Bird, ItemID.BlueJay, ItemID.Cardinal, ItemID.GoldBird, ItemID.Duck, ItemID.MallardDuck);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyBird", group);
+            new RecipeGroupInfo(Instance, "AnyBird", true, ItemID.Bird, ItemID.BlueJay, ItemID.Cardinal, ItemID.GoldBird, ItemID.Duck, ItemID.MallardDuck);
 
             //vanilla scorpions
-            group = new RecipeGroup(() => Lang.misc[37] + " Scorpion", ItemID.Scorpion, ItemID.BlackScorpion);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyScorpion", group);
+            new RecipeGroupInfo(Instance, "AnyScorpion", true, ItemID.Scorpion, ItemID.BlackScorpion);
 
             //gold pick
-            group = new RecipeGroup(() => Lang.misc[37] + " Gold Pickaxe", ItemID.GoldPickaxe, ItemID.PlatinumPickaxe);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyGoldPickaxe", group);
+            new RecipeGroupInfo(Instance, "AnyGoldPickaxe", true, ItemID.GoldPickaxe, ItemID.PlatinumPickaxe);
 
             //fish trash
-            group = new RecipeGroup(() => Lang.misc[37] + " Fishing Trash", ItemID.OldShoe, ItemID.TinCan, ItemID.FishingSeaweed);
-            RecipeGroup.RegisterGroup("FargowiltasSouls:AnyFishingTrash", group);
+            new RecipeGroupInfo(Instance, "AnyFishingTrash", true, ItemID.OldShoe, ItemID.TinCan, ItemID.FishingSeaweed);
         }
 
         public override void HandlePacket(BinaryReader reader, int whoAmI)

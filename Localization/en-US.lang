@@ -1,8 +1,37 @@
-﻿# Hotkeys
-# Localizations with a '#' before them means that translations are needed
+﻿# Localizations with a '#' before them means that translations are needed
+# Toggles are located in Fargowiltas.cs
 
+# Hotkeys
 Hotkey.FreezeKey=Freeze Time
 Hotkey.GoldKey=Turn Gold
 Hotkey.SmokeBombKey=Throw Smoke Bomb
 Hotkey.BetsyDashKey=Fireball Dash
 Hotkey.MutantBombKey=Mutant Bomb
+
+# Recipe Groups
+RecipeGroups.AnyDrax=Drax
+RecipeGroups.AnyBonesBanner=Angry or Armored Bones Banner
+RecipeGroups.AnyCobaltRepeater=Cobalt Repeater
+RecipeGroups.AnyMythrilRepeater=Mythril Repeater
+RecipeGroups.AnyAdamantiteRepeater=Adamantite Repeater
+RecipeGroups.AnyEvilWood=Evil Wood
+RecipeGroups.AnyAdamantite=Adamantite Bare
+RecipeGroups.AnyShroomHead=Shroomite Head Piece
+RecipeGroups.AnyOrichalcumHead=Orichalcum Head Piece
+RecipeGroups.AnyPallaHead=Palladium Head Piece
+RecipeGroups.AnyCobaltHead=Cobalt Head Piece
+RecipeGroups.AnyMythrilHead=Mythril Head Piece
+RecipeGroups.AnyTitaHead=Titanium Head Piece
+RecipeGroups.AnyHallowHead=Hallowed Head Piece
+RecipeGroups.AnyAdamHead=Adamantite Head Piece
+RecipeGroups.AnyChloroHead=Chlorophyte Head Piece
+RecipeGroups.AnySpectreHead=Spectre Head Piece
+RecipeGroups.AnyBettle=Beetle Body
+RecipeGroups.AnyPhasesaber=Phasesaber
+RecipeGroups.AnyButterfly=Butterfly
+RecipeGroups.AnySquirrel=Squirrel
+RecipeGroups.AnyCommonFish=Common Fish
+RecipeGroups.AnyBird=Bird
+RecipeGroups.AnyScorpion=Scorpion
+RecipeGroups.AnyGoldPickaxe=Gold Pickaxe
+RecipeGroups.AnyFishingTrash=Fishing Trash
