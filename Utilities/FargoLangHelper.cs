@@ -8,8 +8,9 @@ namespace FargowiltasSouls.Utilities
         internal enum LangCategory
         {
             Hotkey,
-            Toggles, // This shouldn't be directly used outside of ModifyToggleTranslation
-            RecipeGroups
+            Toggles,
+            RecipeGroups,
+            Announcements
         }
 
         internal static string GetHotkeyText(string key) => GetFargoTextByCategory(LangCategory.Hotkey, key);
@@ -17,6 +18,8 @@ namespace FargowiltasSouls.Utilities
         internal static string GetToggleText(string key) => GetFargoTextByCategory(LangCategory.Toggles, key);
 
         internal static string GetRecipeGroupText(string key) => GetFargoTextByCategory(LangCategory.RecipeGroups, key);
+
+        internal static string GetAnnouncementsText(string key) => GetFargoTextByCategory(LangCategory.Announcements, key);
 
         /// <summary>
         /// Returns <see cref="GetModText(Mod, string)"/> with the mod being <see cref="Fargowiltas.Instance"/> and the key being <c>$"{category}.{remainderKey}"</c>.
