@@ -24,7 +24,9 @@ namespace FargowiltasSouls.Utilities
         /// <summary>
         /// Returns <see cref="GetModText(Mod, string)"/> with the mod being <see cref="Fargowiltas.Instance"/> and the key being <c>$"{category}.{remainderKey}"</c>.
         /// </summary>
-        internal static string GetFargoTextByCategory(LangCategory category, string remainderKey) => GetModText(Fargowiltas.Instance, $"{category}.{remainderKey}");
+        internal static string GetFargoTextByCategory(LangCategory category, string remainderKey) => GetFargoText($"{category}.{remainderKey}");
+
+        internal static string GetFargoText(string key) => GetModText(Fargowiltas.Instance, key);
 
         /// <summary>
         /// Returns <see cref="Language.GetTextValue(string)"/> with the string as <c>$"Mods.{mod.Name}.{key}"</c>.

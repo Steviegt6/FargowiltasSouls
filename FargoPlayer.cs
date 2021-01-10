@@ -24,6 +24,7 @@ using FargowiltasSouls.NPCs.EternityMode;
 using Microsoft.Xna.Framework.Graphics;
 using FargowiltasSouls.Items.Accessories.Enchantments;
 using Terraria.Graphics.Shaders;
+using FargowiltasSouls.Utilities;
 
 namespace FargowiltasSouls
 {
@@ -31,6 +32,7 @@ namespace FargowiltasSouls
     {
         //for convenience
         public bool IsStandingStill;
+
         public float AttackSpeed;
         public float wingTimeModifier;
 
@@ -47,6 +49,7 @@ namespace FargowiltasSouls
 
         //minions
         public bool BrainMinion;
+
         public bool EaterMinion;
         public bool BigBrainMinion;
         public bool DukeFishron;
@@ -61,6 +64,7 @@ namespace FargowiltasSouls
         public bool BabyAbom;
 
         #region enchantments
+
         public bool PetsActive = true;
         public bool ShadowEnchant;
         public bool CrimsonEnchant;
@@ -96,8 +100,10 @@ namespace FargowiltasSouls
         private int icicleCD = 0;
         public bool PalladEnchant;
         public int PalladCounter;
+
         //private int palladiumCD = 0;
         public bool OriEnchant;
+
         public bool MeteorEnchant;
         private int meteorTimer = 150;
         private int meteorCD = 0;
@@ -148,7 +154,7 @@ namespace FargowiltasSouls
         public bool DarkSpawn;
         public int DarkSpawnCD = 0;
         private int apprenticeCD = 0;
-        Vector2 prevPosition;
+        private Vector2 prevPosition;
         public bool RedEnchant;
         public bool TungstenEnchant;
         private float tungstenPrevSizeSave = -1;
@@ -192,12 +198,11 @@ namespace FargowiltasSouls
         public bool WillForce;
         public bool WoodForce;
 
-        
-
-        #endregion
+        #endregion enchantments
 
         //soul effects
         public bool MagicSoul;
+
         public bool ThrowSoul;
         public bool RangedSoul;
         public bool RangedEssence;
@@ -213,6 +218,7 @@ namespace FargowiltasSouls
 
         //maso items
         public bool SlimyShield;
+
         public bool SlimyShieldFalling;
         public bool AgitatingLens;
         public int AgitatingLensCD;
@@ -290,6 +296,7 @@ namespace FargowiltasSouls
 
         //debuffs
         public bool Hexed;
+
         public bool Unstable;
         private int unstableCD = 0;
         public bool Fused;
@@ -389,10 +396,7 @@ namespace FargowiltasSouls
             disabledSouls.Clear();
 
             if (ModLoader.GetMod("FargowiltasMusic") == null)
-            {
-                Main.NewText("Fargo's Music Mod not found!", Color.LimeGreen);
-                Main.NewText("Please install Fargo's Music Mod for the full experience!!", Color.LimeGreen);
-            }
+                Main.NewText(FargoLangHelper.GetFargoText("MusicModNotFound"), Color.LimeGreen);
 
             /*for (int i = 0; i < 200; i++)
             {
@@ -582,7 +586,6 @@ namespace FargowiltasSouls
                         Main.projectile[i].Kill();
                 }
 
-
                 void SpawnSphereRing(int max2, float speed, int damage2, float rotationModifier)
                 {
                     float rotation = 2f * (float)Math.PI / max2;
@@ -632,7 +635,8 @@ namespace FargowiltasSouls
             MutantSpawn = false;
             BabyAbom = false;
 
-            #region enchantments 
+            #region enchantments
+
             PetsActive = true;
             ShadowEnchant = false;
             CrimsonEnchant = false;
@@ -719,7 +723,7 @@ namespace FargowiltasSouls
             WillForce = false;
             WoodForce = false;
 
-            #endregion
+            #endregion enchantments
 
             //souls
             MagicSoul = false;
@@ -929,10 +933,10 @@ namespace FargowiltasSouls
                 HurtTimer--;
 
             IsStandingStill = Math.Abs(player.velocity.X) < 0.05 && Math.Abs(player.velocity.Y) < 0.05;
-            
+
             player.npcTypeNoAggro[0] = true;
 
-            //wizard 
+            //wizard
             for (int i = 3; i <= 9; i++)
             {
                 Item item = player.armor[i];
@@ -945,7 +949,6 @@ namespace FargowiltasSouls
 
                 WizardEnchant = false;
             }
-
 
             if (FargoSoulsWorld.MasochistMode)
             {
@@ -1093,7 +1096,7 @@ namespace FargowiltasSouls
                                 lightningCounter = 0;
                             }
                         }*/
-                    } 
+                    }
                 }
 
                 if (player.wet && !player.lavaWet && !player.honeyWet && !(player.accFlipper || player.gills || MutantAntibodies))
@@ -1181,7 +1184,7 @@ namespace FargowiltasSouls
 
             if (Eternity && TinCrit < 50)
                 TinCrit = 50;
-            else if(TerrariaSoul && TinCrit < 25)
+            else if (TerrariaSoul && TinCrit < 25)
                 TinCrit = 25;
             else if ((TerraForce || WizardEnchant) && TinCrit < 10)
                 TinCrit = 10;
@@ -1305,7 +1308,6 @@ namespace FargowiltasSouls
                                 }
                             }
                         }
-                        
                     }
                     else
                     {
@@ -1674,7 +1676,6 @@ namespace FargowiltasSouls
                             damage = 60;
                         damage = (int)(damage * player.magicDamage);
                         int proj = Projectile.NewProjectile(player.Center, player.velocity * 0.1f, mod.ProjectileType("BloodScytheFriendly"), damage, 5f, player.whoAmI);
-
                     }
                 }
             }
@@ -1887,7 +1888,7 @@ namespace FargowiltasSouls
                     dust2.noGravity = true;
                 }
             }
-            
+
             if (MutantPresence)
             {
                 player.statDefense /= 2;
@@ -2065,7 +2066,7 @@ namespace FargowiltasSouls
             {
                 if (player.lifeRegen > 4)
                     player.lifeRegen = 4;
-                
+
                 if (player.lifeRegenCount > 0)
                     player.lifeRegenCount -= 6;
 
@@ -2269,7 +2270,6 @@ namespace FargowiltasSouls
                 crit = false;
 
                 return;
-
             }
 
             if (SqueakyToy)
@@ -2336,7 +2336,6 @@ namespace FargowiltasSouls
                 crit = false;
 
                 return;
-
             }
 
             if (SqueakyToy)
@@ -2408,7 +2407,7 @@ namespace FargowiltasSouls
                     beeCD = 15;
                 }
             }
-                
+
             if (SoulConfig.Instance.GetValue(SoulConfig.Instance.SpectreOrbs) && !target.immortal)
             {
                 if (SpectreEnchant && proj.type != ProjectileID.SpectreWrath)
@@ -2565,7 +2564,7 @@ namespace FargowiltasSouls
 
             if (OriEnchant && proj.type == ProjectileID.FlowerPetal)
             {
-                int[] fireDebuffs = { BuffID.OnFire, BuffID.CursedInferno, BuffID.Frostburn, BuffID.ShadowFlame};
+                int[] fireDebuffs = { BuffID.OnFire, BuffID.CursedInferno, BuffID.Frostburn, BuffID.ShadowFlame };
                 int debuff = Main.rand.Next(4);
 
                 target.AddBuff(fireDebuffs[debuff], 300);
@@ -2613,7 +2612,7 @@ namespace FargowiltasSouls
 
                 for (int j = 0; j < 15; j++) //spray honey
                 {
-                    Projectile.NewProjectile(target.Center, new Vector2(Main.rand.NextFloat(-6, 6), Main.rand.NextFloat(-8, -5)), 
+                    Projectile.NewProjectile(target.Center, new Vector2(Main.rand.NextFloat(-6, 6), Main.rand.NextFloat(-8, -5)),
                         ModContent.ProjectileType<HoneyDrop>(), 0, 0f, Main.myPlayer);
                 }
             }
@@ -2636,7 +2635,7 @@ namespace FargowiltasSouls
 
             if (SoulConfig.Instance.GetValue(SoulConfig.Instance.ShadewoodEffect) && target.HasBuff(ModContent.BuffType<SuperBleed>()) && shadewoodCD == 0 && projectile != ModContent.ProjectileType<SuperBlood>())
             {
-                for(int i = 0; i < Main.rand.Next(3, 6); i++)
+                for (int i = 0; i < Main.rand.Next(3, 6); i++)
                 {
                     Projectile.NewProjectile(target.Center.X, target.Center.Y - 20, 0f + Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), ModContent.ProjectileType<SuperBlood>(), 20, 0f, Main.myPlayer);
                 }
@@ -2714,11 +2713,11 @@ namespace FargowiltasSouls
                 gladCount = WillForce ? 30 : 60;
             }
 
-            if(RainEnchant && SoulConfig.Instance.GetValue(SoulConfig.Instance.RainCloud) && projectile != ProjectileID.RainFriendly && player.ownedProjectileCounts[ModContent.ProjectileType<RainCloud>()] < 1)
+            if (RainEnchant && SoulConfig.Instance.GetValue(SoulConfig.Instance.RainCloud) && projectile != ProjectileID.RainFriendly && player.ownedProjectileCounts[ModContent.ProjectileType<RainCloud>()] < 1)
             {
                 rainDamage += damage;
 
-                if(rainDamage > 500 || NatureForce || WizardEnchant)
+                if (rainDamage > 500 || NatureForce || WizardEnchant)
                 {
                     Projectile.NewProjectile(target.Center, new Vector2(0, -2f), ModContent.ProjectileType<RainCloud>(), damage, 0, Main.myPlayer);
                     rainDamage = 0;
@@ -2797,7 +2796,6 @@ namespace FargowiltasSouls
                 if (TinCrit > 100)
                     TinCrit = 100;
             }
-            
 
             /*if (PalladEnchant && !TerrariaSoul && palladiumCD == 0 && !target.immortal && !player.moonLeech)
             {
@@ -3151,9 +3149,9 @@ namespace FargowiltasSouls
                 player.AddBuff(ModContent.BuffType<DisruptedFocus>(), 300);
             }
 
-            if(TinEnchant)
+            if (TinEnchant)
             {
-                if(Eternity)
+                if (Eternity)
                 {
                     TinCrit = 50;
                     eternityDamage = 0;
@@ -3162,11 +3160,11 @@ namespace FargowiltasSouls
                 {
                     TinCrit = 25;
                 }
-                else if((TerraForce || WizardEnchant) && TinCrit != 10)
+                else if ((TerraForce || WizardEnchant) && TinCrit != 10)
                 {
                     TinCrit = 10;
                 }
-                else if(TinCrit != 4)
+                else if (TinCrit != 4)
                 {
                     TinCrit = 4;
                 }
@@ -3276,7 +3274,7 @@ namespace FargowiltasSouls
                     player.immuneTime = 180;
                     player.hurtCooldowns[0] = 180;
                     player.hurtCooldowns[1] = 180;
-                    Main.NewText("You've been revived!", Color.LimeGreen);
+                    Main.NewText(FargoLangHelper.GetFargoText("Revived"), Color.LimeGreen);
                     player.AddBuff(ModContent.BuffType<MutantRebirth>(), 10800);
                     Projectile.NewProjectile(player.Center, -Vector2.UnitY, ModContent.ProjectileType<GiantDeathray>(), (int)(7000 * player.minionDamage), 10f, player.whoAmI);
                     retVal = false;
@@ -3286,7 +3284,7 @@ namespace FargowiltasSouls
                     if (!WasHurtBySomething)
                     {
                         player.statLife = 1;
-                        //CombatText.NewText(player.Hitbox, Color.SandyBrown, "You've been revived!");
+                        //CombatText.NewText(player.Hitbox, Color.SandyBrown, FargoLangHelper.GetFargoText("Revived"));
                         return false; //this is deliberate
                     }
                 }
@@ -3300,7 +3298,7 @@ namespace FargowiltasSouls
                         player.HealEffect(heal);
                         player.immune = true;
                         player.immuneTime = player.longInvince ? 180 : 120;
-                        CombatText.NewText(player.Hitbox, Color.SandyBrown, "You've been revived!");
+                        CombatText.NewText(player.Hitbox, Color.SandyBrown, FargoLangHelper.GetFargoText("Revived"));
                         player.AddBuff(ModContent.BuffType<Revived>(), 10800);
                         retVal = false;
                     }
@@ -3310,7 +3308,7 @@ namespace FargowiltasSouls
                         player.HealEffect(200);
                         player.immune = true;
                         player.immuneTime = player.longInvince ? 180 : 120;
-                        CombatText.NewText(player.Hitbox, Color.SandyBrown, "You've been revived!");
+                        CombatText.NewText(player.Hitbox, Color.SandyBrown, FargoLangHelper.GetFargoText("Revived"));
                         player.AddBuff(ModContent.BuffType<Revived>(), 14400);
                         retVal = false;
 
@@ -3329,7 +3327,7 @@ namespace FargowiltasSouls
                         player.HealEffect(heal);
                         player.immune = true;
                         player.immuneTime = player.longInvince ? 300 : 200;
-                        CombatText.NewText(player.Hitbox, Color.SandyBrown, "You've been revived!");
+                        CombatText.NewText(player.Hitbox, Color.SandyBrown, FargoLangHelper.GetFargoText("Revived"));
                         player.AddBuff(ModContent.BuffType<Revived>(), 18000);
                         retVal = false;
 
@@ -3353,7 +3351,7 @@ namespace FargowiltasSouls
                     player.HealEffect(heal);
                     player.immune = true;
                     player.immuneTime = player.longInvince ? 180 : 120;
-                    Main.NewText("You've been revived!", Color.Yellow);
+                    Main.NewText(FargoLangHelper.GetFargoText("Revived"), Color.Yellow);
                     player.AddBuff(ModContent.BuffType<AbomRebirth>(), MutantEye ? 600 : 900);
                     retVal = false;
                 }
@@ -3445,7 +3443,7 @@ namespace FargowiltasSouls
             {
                 player.bodyFrame.Y = player.bodyFrame.Height * 10;
             }
-            if(GaiaOffense)
+            if (GaiaOffense)
             {
                 drawInfo.bodyArmorShader = GameShaders.Armor.GetShaderIdFromItemId(mod.ItemType("GaiaDye")); //set armor and accessory shaders to gaia shader if set bonus is triggered
                 drawInfo.headArmorShader = GameShaders.Armor.GetShaderIdFromItemId(mod.ItemType("GaiaDye"));
@@ -3459,7 +3457,7 @@ namespace FargowiltasSouls
 
         public void AddPet(bool toggle, bool vanityToggle, int buff, int proj)
         {
-            if(vanityToggle)
+            if (vanityToggle)
             {
                 PetsActive = false;
                 return;
@@ -3473,7 +3471,7 @@ namespace FargowiltasSouls
 
         public void AddMinion(bool toggle, int proj, int damage, float knockback)
         {
-            if(player.ownedProjectileCounts[proj] < 1 && player.whoAmI == Main.myPlayer && SoulConfig.Instance.GetValue(toggle))
+            if (player.ownedProjectileCounts[proj] < 1 && player.whoAmI == Main.myPlayer && SoulConfig.Instance.GetValue(toggle))
                 Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, proj, damage, knockback, Main.myPlayer);
         }
 
@@ -3576,18 +3574,18 @@ namespace FargowiltasSouls
 
         public int HighestDamageTypeScaling(int dmg)
         {
-            List<float> types = new List<float> { player.meleeDamage, player.rangedDamage, player.magicDamage, player.minionDamage};
-            
+            List<float> types = new List<float> { player.meleeDamage, player.rangedDamage, player.magicDamage, player.minionDamage };
+
             return (int)(types.Max() * dmg);
         }
 
         public override bool PreItemCheck()
         {
-            if (Berserked || (TribalCharm && SoulConfig.Instance.TribalCharm && player.HeldItem.type != ItemID.RodofDiscord && player.HeldItem.fishingPole == 0 ))
+            if (Berserked || (TribalCharm && SoulConfig.Instance.TribalCharm && player.HeldItem.type != ItemID.RodofDiscord && player.HeldItem.fishingPole == 0))
             {
                 TribalAutoFire = player.HeldItem.autoReuse;
                 player.HeldItem.autoReuse = true;
-            }    
+            }
 
             /*if (FargoSoulsWorld.MasochistMode) //maso item nerfs
             {
@@ -3691,7 +3689,7 @@ namespace FargowiltasSouls
                         return 0.75f;
                     }
                     return 0.85f;
-                    
+
                 case ItemID.Tsunami:
                 case ItemID.ChlorophyteShotbow:
                 case ItemID.HellwingBow:
@@ -3739,7 +3737,7 @@ namespace FargowiltasSouls
                                 NPC.NewNPC((int)Main.projectile[i].Center.X, (int)Main.projectile[i].Center.Y + 100,
                                     NPCID.DukeFishron, 0, 0f, 0f, 0f, 0f, player.whoAmI);
                                 EModeGlobalNPC.spawnFishronEX = false;
-                                Main.NewText("Duke Fishron EX has awoken!", 50, 100, 255);
+                                Main.NewText(FargoLangHelper.GetAnnouncementsText("DukeExAwoken"), 50, 100, 255);
                             }
                             else if (Main.netMode == NetmodeID.MultiplayerClient) //MP, broadcast(?) packet from spawning player's client
                             {
@@ -3788,10 +3786,11 @@ namespace FargowiltasSouls
             }
         }
 
-        int frameCounter = 0;
-        int frame = 1;
+        private int frameCounter = 0;
+        private int frame = 1;
 
-        public static readonly PlayerLayer BlizzardEffect = new PlayerLayer("FargowiltasSouls", "MiscEffects", PlayerLayer.MiscEffectsFront, delegate (PlayerDrawInfo drawInfo) {
+        public static readonly PlayerLayer BlizzardEffect = new PlayerLayer("FargowiltasSouls", "MiscEffects", PlayerLayer.MiscEffectsFront, delegate (PlayerDrawInfo drawInfo)
+        {
             if (drawInfo.shadow != 0f)
             {
                 return;
@@ -3820,7 +3819,6 @@ namespace FargowiltasSouls
                 int drawY = (int)(drawInfo.position.Y + drawPlayer.height / 2f - Main.screenPosition.Y);
                 DrawData data = new DrawData(texture, new Vector2(drawX, drawY), new Rectangle(0, frameSize * modPlayer.frame, texture.Width, frameSize), Lighting.GetColor((int)((drawInfo.position.X + drawPlayer.width / 2f) / 16f), (int)((drawInfo.position.Y + drawPlayer.height / 2f) / 16f)), 0f, new Vector2(texture.Width / 2f, frameSize / 2f), 1f, SpriteEffects.None, 0);
                 Main.playerDrawData.Add(data);
-
 
                 //GameShaders.Armor.Apply(GameShaders.Armor.GetShaderIdFromItemId(drawPlayer.dye[1].type, drawPlayer, data);
             }
@@ -3859,8 +3857,6 @@ namespace FargowiltasSouls
                     }
                 }
             }
-
-
         }
 
         public override void ModifyScreenPosition()

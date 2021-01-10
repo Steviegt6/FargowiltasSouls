@@ -37,3 +37,6 @@ RecipeGroups.AnyGoldPickaxe=Gold Pickaxe
 RecipeGroups.AnyFishingTrash=Fishing Trash
 
 Announcements.DukeExAwoken=Duke Fishron EX has awoken!
+
+MusicModNotFound=Fargo's Music Mod not found!\nPlease install Fargo's Music Mod for the full experience.
+Revived=You've been revived!
