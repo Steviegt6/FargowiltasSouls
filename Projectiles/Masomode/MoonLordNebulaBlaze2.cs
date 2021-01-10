@@ -14,8 +14,6 @@ namespace FargowiltasSouls.Projectiles.Masomode
 
         public override void AI()
         {
-            base.AI();
-
             int ai0 = (int)projectile.ai[0];
             if (!(ai0 > -1 && ai0 < Main.maxNPCs && Main.npc[ai0].active && Main.npc[ai0].type == NPCID.MoonLordCore 
                 && Main.npc[ai0].ai[0] != 2f && EModeGlobalNPC.masoStateML == 2))
@@ -52,6 +50,8 @@ namespace FargowiltasSouls.Projectiles.Masomode
                 projectile.Kill();
                 return;
             }
+
+            base.AI();
         }
     }
 }

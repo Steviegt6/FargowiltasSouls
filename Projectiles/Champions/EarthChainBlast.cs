@@ -125,10 +125,13 @@ namespace FargowiltasSouls.Projectiles.Champions
                 Main.dust[d].noGravity = true;
                 Main.dust[d].noLight = true;
             }*/
-            int i2 = Gore.NewGore(projectile.position + new Vector2(projectile.width * Main.rand.Next(100) / 100f, projectile.height * Main.rand.Next(100) / 100f) - Vector2.One * 10f, new Vector2(), Main.rand.Next(61, 64), 1f);
-            Main.gore[i2].velocity *= 0.3f;
-            Main.gore[i2].velocity.X += Main.rand.Next(-10, 11) * 0.05f;
-            Main.gore[i2].velocity.Y += Main.rand.Next(-10, 11) * 0.05f;
+            if (Main.rand.Next(4) == 0)
+            {
+                int i2 = Gore.NewGore(projectile.position + new Vector2(projectile.width * Main.rand.Next(100) / 100f, projectile.height * Main.rand.Next(100) / 100f) - Vector2.One * 10f, new Vector2(), Main.rand.Next(61, 64), 1f);
+                Main.gore[i2].velocity *= 0.3f;
+                Main.gore[i2].velocity.X += Main.rand.Next(-10, 11) * 0.05f;
+                Main.gore[i2].velocity.Y += Main.rand.Next(-10, 11) * 0.05f;
+            }
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

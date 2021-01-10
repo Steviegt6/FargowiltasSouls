@@ -89,8 +89,7 @@ namespace FargowiltasSouls.Projectiles
                 case ProjectileID.SaucerDeathray:
                 case ProjectileID.SandnadoHostile:
                 case ProjectileID.SandnadoHostileMark:
-                    if (FargoSoulsWorld.MasochistMode)
-                        ImmuneToGuttedHeart = true;
+                    ImmuneToGuttedHeart = true;
                     break;
 
                 case ProjectileID.SpiritHeal:
@@ -1382,7 +1381,7 @@ namespace FargowiltasSouls.Projectiles
                         if (fargoPlayer.CyclonicFin)
                             grazeGain *= 2;
 
-                        GrazeCD = 30;
+                        GrazeCD = 30 * projectile.MaxUpdates;
                         fargoPlayer.GrazeBonus += grazeGain;
                         if (fargoPlayer.GrazeBonus > grazeCap)
                             fargoPlayer.GrazeBonus = grazeCap;

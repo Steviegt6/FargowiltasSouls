@@ -61,6 +61,14 @@ namespace FargowiltasSouls.Projectiles.Masomode
 
         public override void AI()
         {
+            for (int i = 0; i < 5; i++)
+            {
+                int d = Dust.NewDust(projectile.position, projectile.width, projectile.height, 174, 0f, 0f, 0, default(Color), 2f);
+                Main.dust[d].velocity *= 3f;
+                if (Main.rand.Next(4) != 0)
+                    Main.dust[d].noGravity = true;
+            }
+
             int ai0 = (int)projectile.ai[0]; //core
             int ai1 = (int)projectile.ai[1]; //socket
             if (!(ai1 > -1 && ai1 < Main.maxNPCs && Main.npc[ai1].active && Main.npc[ai1].type == NPCID.MoonLordHand
@@ -88,8 +96,8 @@ namespace FargowiltasSouls.Projectiles.Masomode
             }
             else if (projectile.localAI[0] == 120) //launch at player
             {
-                projectile.velocity = (Main.player[Main.npc[ai0].target].Center - projectile.Center) / 40;
-                projectile.timeLeft = 41;
+                projectile.velocity = (Main.player[Main.npc[ai0].target].Center - projectile.Center) / 50;
+                projectile.timeLeft = 51;
                 projectile.netUpdate = true;
             }
             else
@@ -175,12 +183,12 @@ namespace FargowiltasSouls.Projectiles.Masomode
                     Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<MoonLordSunBlast>(),
                         projectile.damage, projectile.knockBack, projectile.owner, projectile.velocity.ToRotation() - MathHelper.PiOver2, 5);*/
 
-                    const int max = 12; //spread
+                    const int max = 4; //spread
                     for (int i = 0; i < max; i++)
                     {
-                        Vector2 offset = Main.rand.NextFloat(projectile.width / 4) * Vector2.UnitX.RotatedBy(Math.PI * 2 / max * i);
-                        Projectile.NewProjectile(projectile.Center + offset, Vector2.Zero, ModContent.ProjectileType<MoonLordSunBlast>(),
-                          projectile.damage, projectile.knockBack, projectile.owner, offset.ToRotation(), 4);
+                        Vector2 offset = projectile.width / 2 * Vector2.UnitX.RotatedBy(Math.PI * 2 / max * i);
+                        Projectile.NewProjectile(projectile.Center + Main.rand.NextVector2Circular(projectile.width / 2, projectile.height / 2), Vector2.Zero, ModContent.ProjectileType<MoonLordSunBlast>(),
+                            projectile.damage, projectile.knockBack, projectile.owner, MathHelper.WrapAngle(offset.ToRotation()), 24);
                     }
                 }
             }

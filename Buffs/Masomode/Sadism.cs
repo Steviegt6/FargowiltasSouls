@@ -39,6 +39,7 @@ namespace FargowiltasSouls.Buffs.Masomode
             player.buffImmune[ModContent.BuffType<GodEater>()] = true;
             player.buffImmune[ModContent.BuffType<Guilty>()] = true;
             player.buffImmune[ModContent.BuffType<Hexed>()] = true;
+            player.buffImmune[ModContent.BuffType<Hypothermia>()] = true;
             player.buffImmune[ModContent.BuffType<Infested>()] = true;
             player.buffImmune[ModContent.BuffType<IvyVenom>()] = true;
             player.buffImmune[ModContent.BuffType<Jammed>()] = true;

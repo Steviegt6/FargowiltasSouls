@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using FargowiltasSouls.Buffs.Masomode;
+using FargowiltasSouls.NPCs;
 
 namespace FargowiltasSouls.Projectiles.Masomode
 {
@@ -64,9 +64,33 @@ namespace FargowiltasSouls.Projectiles.Masomode
                     Projectile.NewProjectile(projectile.Center + offset, Vector2.Zero, projectile.type,
                         projectile.damage, 0f, projectile.owner, projectile.ai[0], projectile.ai[1]);
                 }*/
-                Vector2 offset = projectile.width * 0.5f * baseDirection.RotatedBy(Main.rand.NextFloat(-random, random));
-                Projectile.NewProjectile(projectile.Center + offset, Vector2.Zero, projectile.type,
-                    projectile.damage, 0f, projectile.owner, projectile.ai[0], projectile.ai[1]);
+                if (EModeGlobalNPC.masoStateML == 0)
+                {
+                    bool sustainBlast = true;
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                    {
+                        if (Main.npc[i].active && Main.npc[i].type == NPCID.MoonLordFreeEye
+                            && Main.npc[i].ai[0] == 4 && Main.npc[i].ai[1] > 970)
+                        {
+                            sustainBlast = false;
+                            break;
+                        }
+                    }
+
+                    //don't do sustained blasts in one place if deathrays are firing
+                    if (sustainBlast)
+                    {
+                        Projectile.NewProjectile(projectile.Center + Main.rand.NextVector2Circular(20, 20), Vector2.Zero, projectile.type,
+                        projectile.damage, 0f, projectile.owner, 22, projectile.ai[1] - 1); //22
+                    }
+
+                    if (projectile.ai[0] != 22) //no real reason for this number, just some unique identifier
+                    {
+                        Vector2 offset = projectile.width * 0.75f * baseDirection.RotatedBy(Main.rand.NextFloat(-random, random));
+                        Projectile.NewProjectile(projectile.Center + offset, Vector2.Zero, projectile.type,
+                              projectile.damage, 0f, projectile.owner, projectile.ai[0], projectile.ai[1]);
+                    }
+                }
             }
 
             if (projectile.localAI[0] == 0f)
@@ -75,7 +99,7 @@ namespace FargowiltasSouls.Projectiles.Masomode
                 Main.PlaySound(SoundID.Item88, projectile.Center);
 
                 projectile.position = projectile.Center;
-                projectile.scale = Main.rand.NextFloat(1f, 2f);
+                projectile.scale = Main.rand.NextFloat(1f, 4f);
                 projectile.rotation = Main.rand.NextFloat(MathHelper.TwoPi);
                 projectile.width = (int)(projectile.width * projectile.scale);
                 projectile.height = (int)(projectile.height * projectile.scale);
@@ -86,7 +110,7 @@ namespace FargowiltasSouls.Projectiles.Masomode
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(BuffID.OnFire, 300);
-            target.AddBuff(BuffID.Burning, 300);
+            //target.AddBuff(BuffID.Burning, 300);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

@@ -3681,6 +3681,7 @@ namespace FargowiltasSouls
                 case ItemID.XenoStaff:
                 case ItemID.MoltenFury:
                 case ItemID.BeesKnees:
+                case ItemID.Phantasm:
                     return 0.75f;
 
                 case ItemID.SpaceGun:
@@ -3693,7 +3694,6 @@ namespace FargowiltasSouls
                     
                 case ItemID.Tsunami:
                 case ItemID.ChlorophyteShotbow:
-                case ItemID.Phantasm:
                 case ItemID.HellwingBow:
                 case ItemID.DartPistol:
                 case ItemID.DartRifle:

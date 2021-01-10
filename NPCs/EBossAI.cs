@@ -2467,6 +2467,8 @@ namespace FargowiltasSouls.NPCs
                                     NetUpdateMaso(npc.whoAmI);
                                 }
                             }
+
+                            Counter[0]++;
                         }
                         else
                         {
@@ -2500,7 +2502,7 @@ namespace FargowiltasSouls.NPCs
                         Vector2 pivot = npc.Center;
                         pivot += Vector2.Normalize(npc.velocity.RotatedBy(Math.PI / 2)) * 600;
                         
-                        if (++Counter[2] > 100)
+                        if (++Counter[2] > 80)
                         {
                             Counter[2] = 0;
                             if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -2513,7 +2515,7 @@ namespace FargowiltasSouls.NPCs
                                     Vector2 speed = npc.DirectionTo(pivot).RotatedBy(2 * Math.PI / max * i);
                                     Vector2 spawnPos = pivot - speed * 600;
                                     int p = Projectile.NewProjectile(spawnPos, speed, ModContent.ProjectileType<DestroyerLaser>(), projDamage, 0f, Main.myPlayer);
-                                    if (npc.life < npc.lifeMax / 10 && p != Main.maxProjectiles)
+                                    if (p != Main.maxProjectiles)
                                         Main.projectile[p].timeLeft = 81;
                                 }
                             }
@@ -3272,6 +3274,8 @@ namespace FargowiltasSouls.NPCs
                                 Main.dust[d].velocity *= 3f;
                                 Main.dust[d].noGravity = true;
                             }
+
+                            //if (Main.netMode != NetmodeID.MultiplayerClient) Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<PrimeTrail>(), 0, 0f, Main.myPlayer, npc.whoAmI, 0f);
                         }
 
                         npc.damage = 0;
@@ -3312,8 +3316,7 @@ namespace FargowiltasSouls.NPCs
                 }
                 else if (Main.npc[ai1].ai[1] == 1 || Main.npc[ai1].ai[1] == 2) //other limbs while prime spinning
                 {
-                    int d = Dust.NewDust(npc.position, npc.width, npc.height, 112, npc.velocity.X * .4f, npc.velocity.Y * .4f, 0, Color.White, 2);
-                    Main.dust[d].noGravity = true;
+                    //int d = Dust.NewDust(npc.position, npc.width, npc.height, 112, npc.velocity.X * .4f, npc.velocity.Y * .4f, 0, Color.White, 2); Main.dust[d].noGravity = true;
                     if (!masoBool[2]) //AND STRETCH HIS ARMS OUT JUST FOR YOU
                     {
                         Counter[3] = 2; //no damage while moving into position
@@ -3335,6 +3338,9 @@ namespace FargowiltasSouls.NPCs
                         Vector2 target = Main.npc[ai1].Center + offset;
 
                         npc.velocity = (target - npc.Center) / 20;
+
+                        if (Counter[0] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
+                            Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<PrimeTrail>(), 0, 0f, Main.myPlayer, npc.whoAmI, 1f);
 
                         if (++Counter[0] > 60)
                         {
@@ -5344,13 +5350,13 @@ namespace FargowiltasSouls.NPCs
                                     Projectile.NewProjectile(Main.npc[(int)npc.localAI[0]].Center, Vector2.Zero, ModContent.ProjectileType<MoonLordSun>(),
                                         60, 0f, Main.myPlayer, npc.whoAmI, npc.localAI[0]);
                             }
-                            else if (Counter[2] == 60)
+                            else if (Counter[2] == 30 + 150)
                             {
                                 if (Main.netMode != NetmodeID.MultiplayerClient)
                                     Projectile.NewProjectile(Main.npc[(int)npc.localAI[1]].Center, Vector2.Zero, ModContent.ProjectileType<MoonLordSun>(),
                                         60, 0f, Main.myPlayer, npc.whoAmI, npc.localAI[1]);
                             }
-                            else if (Counter[2] > 200)
+                            else if (Counter[2] > 300)
                             {
                                 Counter[2] = 0;
                             }

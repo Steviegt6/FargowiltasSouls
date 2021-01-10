@@ -65,6 +65,7 @@ Summons a friendly super Flocko, Mini Saucer, and true eyes of Cthulhu
 
             //ice queen's crown
             player.buffImmune[BuffID.Frozen] = true;
+            player.buffImmune[ModContent.BuffType<Buffs.Masomode.Hypothermia>()] = true;
             if (SoulConfig.Instance.GetValue(SoulConfig.Instance.FlockoMinion))
                 player.AddBuff(mod.BuffType("SuperFlocko"), 2);
 

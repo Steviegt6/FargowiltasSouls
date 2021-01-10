@@ -37,7 +37,7 @@ namespace FargowiltasSouls.NPCs.MutantBoss
             npc.damage = 360;
             npc.defense = 360;
             npc.value = Item.buyPrice(2);
-            npc.lifeMax = 3500000; //Main.expertMode ? 7700000 : 3700000;
+            npc.lifeMax = Main.expertMode ? 7000000 : 3500000;
             npc.HitSound = SoundID.NPCHit57;
             npc.noGravity = true;
             npc.noTileCollide = true;
@@ -61,9 +61,9 @@ namespace FargowiltasSouls.NPCs.MutantBoss
             npc.timeLeft = NPC.activeTime * 30;
             if (FargoSoulsWorld.AngryMutant || Fargowiltas.Instance.CalamityLoaded)
             {
-                npc.lifeMax = 277000000;
+                npc.lifeMax = 177000000;
                 npc.damage = (int)(npc.damage * 2);
-                npc.defense *= 5;
+                npc.defense *= 2;
                 if (Fargowiltas.Instance.CalamityLoaded)
                 {
                     npc.buffImmune[ModLoader.GetMod("CalamityMod").BuffType("ExoFreeze")] = true;
@@ -92,7 +92,7 @@ namespace FargowiltasSouls.NPCs.MutantBoss
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.damage = (int)(npc.damage * 0.5f);
-            npc.lifeMax = (int)(npc.lifeMax /* 0.5f */ * bossLifeScale);
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
         }
 
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
